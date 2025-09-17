@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VoltNexis OS Hub - Trusted Operating System Downloads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      margin: 0;
+      min-height: 100vh;
+      color: #1a202c;
+      overflow-x: hidden;
+    }
+    .bg-pattern {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(circle at 25% 25%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 75% 75%, rgba(255,255,255,0.05) 0%, transparent 50%);
+      z-index: -1;
+    }
+    header {
+      background: rgba(26, 32, 44, 0.95);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      padding: 2.5rem 0;
+      text-align: center;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      position: relative;
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .logo i {
+      font-size: 3rem;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      background: linear-gradient(45deg, #fff, #e2e8f0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .subtitle {
+      font-size: 1.2rem;
+      color: #cbd5e1;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+    .brand {
+      font-size: 0.9rem;
+      color: #94a3b8;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+    nav {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      margin-bottom: 3rem;
+    }
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 0 2rem;
+    }
+    .nav-item {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    .nav-item:hover, .nav-item.active {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem 2rem;
+    }
+    .search-filter {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .search-box {
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 0.75rem;
+      font-size: 1.1rem;
+      background: #fff;
+      transition: border-color 0.3s ease;
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+    .search-box i {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-size: 1.2rem;
+    }
+    .filter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .filter-tag {
+      padding: 0.5rem 1rem;
+      background: #f1f5f9;
+      border: 2px solid transparent;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      color: #475569;
+    }
+    .filter-tag:hover, .filter-tag.active {
+      background: #667eea;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .os-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    .os-card {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 200px;
+    }
+    .os-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #667eea, #764ba2);
+    }
+    .os-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.12);
+    }
+    .os-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .os-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .os-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a202c;
+      line-height: 1.3;
+      flex: 1;
+    }
+    .os-description {
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .os-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: auto;
+    }
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+    }
+    .stat-item i {
+      color: #667eea;
+      width: 14px;
+      font-size: 0.8rem;
+    }
+    .stat-value {
+      font-weight: 500;
+    }
+
+    .stats {
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      color: #64748b;
+      font-weight: 500;
+    }
+
+    footer {
+      background: rgba(26, 32, 44, 0.95);
+      backdrop-filter: blur(10px);
+      color: #cbd5e1;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 2rem; }
+      .logo i { font-size: 2rem; }
+      main { padding: 0 1rem 2rem 1rem; }
+      .os-list { grid-template-columns: 1fr; }
+      .nav-content { flex-direction: column; gap: 1rem; }
+      .search-filter { padding: 1.5rem; }
+      .filter-tags { justify-content: center; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .header-content { padding: 0 1rem; }
+      .os-card { padding: 1.25rem; }
+      .stat-number { font-size: 2rem; }
+      .os-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-pattern"></div>
+  <header>
+    <div class="header-content">
+      <div class="logo">
+        <img src="assets/logo.png" alt="VoltNexis" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px;">
+        <h1>VoltNexis OS Hub</h1>
+      </div>
+      <p class="subtitle">Your trusted source for operating system downloads</p>
+      <p class="brand">by VoltNexis</p>
+    </div>
+  </header>
+  <main>
+    
+    <div class="search-filter">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search operating systems...">
+      </div>
+      <div class="filter-tags">
+        <div class="filter-tag active" data-filter="all">All</div>
+        <div class="filter-tag" data-filter="linux">Linux</div>
+        <div class="filter-tag" data-filter="windows">Windows</div>
+        <div class="filter-tag" data-filter="android">Android</div>
+        <div class="filter-tag" data-filter="security">Security</div>
+      </div>
+    
+    
+    <div class="os-list" id="osList"></div></div>
+  </main>
+  
+  <footer>
+    <p>&copy; 2024 VoltNexis OS Hub. All rights reserved. | Trusted downloads for developers and enthusiasts.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
