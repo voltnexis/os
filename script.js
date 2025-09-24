@@ -35,7 +35,7 @@ class OSHub {
           }
         }
       },
-            {
+      {
         id: 'parrot-os',
         name: 'Parrot OS',
         description: 'Debian-based Linux distribution focused on security, privacy, and development.',
@@ -48,94 +48,125 @@ class OSHub {
         lastUpdated: '2025-07-07',
         types: {
           'Live': {
-            subtypes: {
-              'Home Edition': {
-                '64bit': { file: 'parrot-home-6.4-amd64.iso', size: '2.5 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso' }
+            editions: {
+              'Security': {
+                architectures: {
+                  'amd64': {
+                    'ISO': { file: 'Parrot-security-6.4_amd64.iso', size: '5.4 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso' },
+                    'Torrent': { file: 'Parrot-security-6.4_amd64.iso.torrent', size: '12 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso.torrent' },
+                    'Hashes': { file: 'Parrot-security-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso.hashes' }
+                  }
+                }
               },
-              'Security Edition': {
-                '64bit': { file: 'parrot-security-6.4-amd64.iso', size: '5.4 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso' }
+              'Home': {
+                architectures: {
+                  'amd64': {
+                    'ISO': { file: 'Parrot-home-6.4_amd64.iso', size: '2.5 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso' },
+                    'Torrent': { file: 'Parrot-home-6.4_amd64.iso.torrent', size: '8 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso.torrent' },
+                    'Hashes': { file: 'Parrot-home-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso.hashes' }
+                  }
+                }
               },
               'HTB': {
-                '64bit': { file: 'parrot-security-6.4-amd64.iso', size: '4.8 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso' }
+                architectures: {
+                  'amd64': {
+                    'ISO': { file: 'Parrot-htb-6.4_amd64.iso', size: '4.8 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso' },
+                    'Torrent': { file: 'Parrot-htb-6.4_amd64.iso.torrent', size: '10 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso.torrent' },
+                    'Hashes': { file: 'Parrot-htb-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso.hashes' }
+                  }
+                }
               }
             }
           },
-          'Virtual Machine': {
-            subtypes: {
-              'VirtualBox': {
-                '64bit': { file: 'parrot-virtual-6.4-amd64.ova', size: '3.8 GB', url: 'assets/os/parrot-virtual-6.4-amd64.ova' }
+          'Virtual': {
+            editions: {
+              'Security': {
+                architectures: {
+                  'amd64': {
+                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
+                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
+
+                  },
+                  'arm64': {
+                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
+                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
+                  }
+                }
               },
-              'VMware': {
-                '64bit': { file: 'parrot-vmware-6.4-amd64.vmdk', size: '3.6 GB', url: 'assets/os/parrot-vmware-6.4-amd64.vmdk' }
+              'Home': {
+                architectures: {
+                  'amd64': {
+                    'UTM (apple silicon)(utm.zip)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
+                    'UTM (apple silicon)(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(utm.zip)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
+
+                  },
+                  'arm64': {
+                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
+                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
+                  }
+                }
               }
             }
           },
           'IoT': {
-            subtypes: {
-              'Raspberry Pi': {
-                'ARM': { file: 'parrot-iot-6.4-armhf.img.xz', size: '1.1 GB', url: 'assets/os/parrot-iot-6.4-armhf.img.xz' }
+            editions: {
+              'Security': {
+                architectures: {
+                  'RaspberryPi': {
+                    'IMG': { file: 'Parrot-security-6.4_rpi.img.xz', size: '1.8 GB', url: 'assets/os/Parrot-security-6.4_rpi.img.xz' },
+                    'Hashes': { file: 'Parrot-security-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-security-6.4_rpi.img.xz.hashes' }
+                  }
+                }
+              },
+              'Home': {
+                architectures: {
+                  'RaspberryPi': {
+                    'IMG': { file: 'Parrot-home-6.4_rpi.img.xz', size: '1.1 GB', url: 'assets/os/Parrot-home-6.4_rpi.img.xz' },
+                    'Hashes': { file: 'Parrot-home-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-home-6.4_rpi.img.xz.hashes' }
+                  }
+                }
+              },
+              'Core': {
+                architectures: {
+                  'RaspberryPi': {
+                    'IMG': { file: 'Parrot-core-6.4_rpi.img.xz', size: '800 MB', url: 'assets/os/Parrot-core-6.4_rpi.img.xz' },
+                    'Hashes': { file: 'Parrot-core-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-core-6.4_rpi.img.xz.hashes' }
+                  }
+                }
+              }
+            }
+          },
+          'Other': {
+            editions: {
+              'WSL': {
+                architectures: {
+                  'x64': {
+                    'WSL': { file: 'parrot-core-6.4.wsl', size: '1.2 GB', url: 'assets/os/parrot-core-6.4.wsl' }
+                  }
+                }
+              },
+              'UTM': {
+                architectures: {
+                  'arm64': {
+                    'UTM': { file: 'Parrot-home-6.4_arm64.utm.zip', size: '2.1 GB', url: 'assets/os/Parrot-home-6.4_arm64.utm.zip' }
+                  }
+                }
               }
             }
           }
         }
-      },
-      {
-        id: 'kali-linux',
-        name: 'Kali Linux 2025.2',
-        file: 'kali-linux-2025.2-virtualbox-amd64.7z',
-        fileUrl: 'assets/os/kali-linux-2025.2-virtualbox-amd64.7z',
-        typeOptions: [
-          { value: 'virtualbox', label: 'VirtualBox Image', description: 'Pre-configured VM image' },
-          { value: 'live-iso', label: 'Live ISO', description: 'Bootable ISO image' }
-        ],
-        defaultType: 'virtualbox',
-        size: '3.1 GB',
-        description: 'Advanced penetration testing and security auditing distribution with 600+ tools.',
-        category: 'security',
-        icon: 'assets/icons/kali.webp',
-        iconColor: '#557C94',
-        verified: true,
-        rating: 4.8,
-        downloads: '5.7M',
-        lastUpdated: '2025-01-10'
-      },
-      {
-        id: 'lineage-gprimelte',
-        name: 'LineageOS 18.1 (gprimelte)',
-        file: 'lineage-18.1-20210426-UNOFFICIAL-gprimelte-V4stable.zip',
-        fileUrl: 'assets/os/lineage-18.1-20210426-UNOFFICIAL-gprimelte-V4stable.zip',
-        typeOptions: [
-          { value: 'recovery', label: 'Recovery ZIP', description: 'Flash via custom recovery' }
-        ],
-        defaultType: 'recovery',
-        size: '650 MB',
-        description: 'Privacy-focused Android ROM for Samsung Galaxy Grand Prime with enhanced performance.',
-        category: 'android',
-        icon: 'assets/icons/lineage.png',
-        iconColor: '#167C80',
-        verified: true,
-        rating: 4.2,
-        downloads: '89K',
-        lastUpdated: '2021-04-26'
-      },
-      {
-        id: 'lineage-whyred',
-        name: 'LineageOS 18.1 (whyred)',
-        file: 'lineage-18.1-20240331-UNOFFICIAL-whyred (1).img',
-        fileUrl: 'assets/os/lineage-18.1-20240331-UNOFFICIAL-whyred (1).img',
-        typeOptions: [
-          { value: 'img', label: 'IMG File', description: 'Direct flash image' }
-        ],
-        defaultType: 'img',
-        size: '1.2 GB',
-        description: 'Custom Android ROM for Xiaomi Redmi Note 5 Pro with latest security patches.',
-        category: 'android',
-        icon: 'assets/icons/lineage.png',
-        iconColor: '#167C80',
-        verified: true,
-        rating: 4.6,
-        downloads: '156K',
-        lastUpdated: '2024-03-31'
       },
       {
         id: 'ubuntu-desktop',
@@ -230,10 +261,27 @@ class OSHub {
       `<img src="${os.icon}" alt="${os.name}" style="width: 32px; height: 32px; object-fit: contain;">` : 
       `<i class="${os.icon}"></i>`;
 
-    // Get total types and subtypes count
+    // Get total counts for 4-level hierarchy
     const totalTypes = os.types ? Object.keys(os.types).length : 0;
-    const totalSubtypes = os.types ? 
-      Object.values(os.types).reduce((acc, type) => acc + Object.keys(type.subtypes).length, 0) : 0;
+    let totalVariants = 0;
+    
+    if (os.types) {
+      Object.values(os.types).forEach(type => {
+        const editions = type.editions || type.subtypes;
+        if (editions) {
+          Object.values(editions).forEach(edition => {
+            const architectures = edition.architectures || edition;
+            if (edition.architectures) {
+              Object.values(architectures).forEach(arch => {
+                totalVariants += this.hasDevices(arch) ? Object.keys(arch).length : 1;
+              });
+            } else {
+              totalVariants += this.hasSubsubtypes(architectures) ? Object.keys(architectures).length : 1;
+            }
+          });
+        }
+      });
+    }
 
     card.innerHTML = `
       <div class="os-header">
@@ -256,7 +304,7 @@ class OSHub {
         </div>
         <div class="stat-item-small">
           <i class="fas fa-code-branch"></i>
-          <span>${totalSubtypes} variants</span>
+          <span>${totalVariants} variants</span>
         </div>
         ${os.verified ? '<div class="stat-item-small"><i class="fas fa-shield-check"></i><span>Verified</span></div>' : ''}
       </div>
@@ -270,36 +318,35 @@ class OSHub {
   }
 
   navigateToDetail(osId) {
-    // Store OS data in localStorage for the detail page
     const os = this.osFiles.find(o => o.id === osId);
     if (os) {
       localStorage.setItem('selectedOS', JSON.stringify(os));
       window.location.href = 'os_detail.html';
     }
   }
-
-
-
-  formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'short', 
-      day: 'numeric' 
-    });
+  
+  hasSubsubtypes(subtypeData) {
+    if (!subtypeData || typeof subtypeData !== 'object') return false;
+    
+    return Object.values(subtypeData).some(value => 
+      typeof value === 'object' && 
+      value !== null && 
+      !value.hasOwnProperty('file') && 
+      !value.hasOwnProperty('size') && 
+      !value.hasOwnProperty('url')
+    );
   }
-
-  adjustColor(color, amount) {
-    const usePound = color[0] === '#';
-    const col = usePound ? color.slice(1) : color;
-    const num = parseInt(col, 16);
-    let r = (num >> 16) + amount;
-    let g = (num >> 8 & 0x00FF) + amount;
-    let b = (num & 0x0000FF) + amount;
-    r = r > 255 ? 255 : r < 0 ? 0 : r;
-    g = g > 255 ? 255 : g < 0 ? 0 : g;
-    b = b > 255 ? 255 : b < 0 ? 0 : b;
-    return (usePound ? '#' : '') + (r << 16 | g << 8 | b).toString(16).padStart(6, '0');
+  
+  hasDevices(archData) {
+    if (!archData || typeof archData !== 'object') return false;
+    
+    return Object.values(archData).some(value => 
+      typeof value === 'object' && 
+      value !== null && 
+      !value.hasOwnProperty('file') && 
+      !value.hasOwnProperty('size') && 
+      !value.hasOwnProperty('url')
+    );
   }
 
   renderOSList() {
@@ -344,33 +391,13 @@ class OSHub {
     this.renderOSList();
   }
 
-
-
-  showNotification(message, type = 'info') {
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-      <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'}"></i>
-      <span>${message}</span>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.classList.add('notification-exit');
-      setTimeout(() => notification.remove(), 300);
-    }, 3000);
-  }
-
   setupEventListeners() {
-    // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         this.filterOS(btn.dataset.filter);
       });
     });
     
-    // Search input
     const searchInput = document.getElementById('searchInput');
     searchInput.addEventListener('input', (e) => {
       this.searchOS(e.target.value);
@@ -380,14 +407,6 @@ class OSHub {
   addAnimations() {
     const style = document.createElement('style');
     style.textContent = `
-      @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-      }
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -395,13 +414,11 @@ class OSHub {
       .os-card {
         animation: fadeIn 0.5s ease forwards;
       }
-
     `;
     document.head.appendChild(style);
   }
 }
 
-// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new OSHub();
 });

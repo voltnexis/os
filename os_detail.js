@@ -3,7 +3,9 @@ class OSDetail {
   constructor() {
     this.osData = null;
     this.selectedType = null;
-    this.selectedSubtype = null;
+    this.selectedEdition = null;
+    this.selectedArchitecture = null;
+    this.selectedDevice = null;
     this.init();
   }
 
@@ -23,8 +25,28 @@ class OSDetail {
       this.osData = JSON.parse(storedData);
       if (this.osData.types && Object.keys(this.osData.types).length > 0) {
         this.selectedType = Object.keys(this.osData.types)[0];
-        const firstSubtype = Object.keys(this.osData.types[this.selectedType].subtypes)[0];
-        this.selectedSubtype = firstSubtype;
+        const typeData = this.osData.types[this.selectedType];
+        
+        if (typeData.editions) {
+          this.selectedEdition = Object.keys(typeData.editions)[0];
+          const editionData = typeData.editions[this.selectedEdition];
+          
+          if (editionData.architectures) {
+            this.selectedArchitecture = Object.keys(editionData.architectures)[0];
+            const archData = editionData.architectures[this.selectedArchitecture];
+            
+            if (this.hasDevices(archData)) {
+              this.selectedDevice = Object.keys(archData)[0];
+            }
+          }
+        } else if (typeData.subtypes) {
+          // Fallback to old structure
+          this.selectedEdition = Object.keys(typeData.subtypes)[0];
+          const subtypeData = typeData.subtypes[this.selectedEdition];
+          if (this.hasSubsubtypes(subtypeData)) {
+            this.selectedArchitecture = Object.keys(subtypeData)[0];
+          }
+        }
       }
     }
   }
@@ -88,8 +110,31 @@ class OSDetail {
 
     // Calculate stats
     const totalTypes = os.types ? Object.keys(os.types).length : 0;
-    const totalSubtypes = os.types ? 
-      Object.values(os.types).reduce((acc, type) => acc + Object.keys(type.subtypes).length, 0) : 0;
+    let totalEditions = 0;
+    let totalArchitectures = 0;
+    let totalDevices = 0;
+    
+    if (os.types) {
+      Object.values(os.types).forEach(type => {
+        const editions = type.editions || type.subtypes;
+        if (editions) {
+          totalEditions += Object.keys(editions).length;
+          Object.values(editions).forEach(edition => {
+            const architectures = edition.architectures || edition;
+            if (edition.architectures) {
+              totalArchitectures += Object.keys(architectures).length;
+              Object.values(architectures).forEach(arch => {
+                if (this.hasDevices(arch)) {
+                  totalDevices += Object.keys(arch).length;
+                }
+              });
+            } else if (this.hasSubsubtypes(architectures)) {
+              totalArchitectures += Object.keys(architectures).length;
+            }
+          });
+        }
+      });
+    }
 
     // Render hero section
     const heroSection = document.getElementById('osHero');
@@ -115,9 +160,19 @@ class OSDetail {
           <div class="stat-label">Types</div>
         </div>
         <div class="stat-card">
-          <div class="stat-value">${totalSubtypes}</div>
-          <div class="stat-label">Subtypes</div>
+          <div class="stat-value">${totalEditions}</div>
+          <div class="stat-label">Editions</div>
         </div>
+        ${totalArchitectures > 0 ? `
+        <div class="stat-card">
+          <div class="stat-value">${totalArchitectures}</div>
+          <div class="stat-label">Architectures</div>
+        </div>` : ''}
+        ${totalDevices > 0 ? `
+        <div class="stat-card">
+          <div class="stat-value">${totalDevices}</div>
+          <div class="stat-label">Devices</div>
+        </div>` : ''}
         <div class="stat-card">
           <div class="stat-value">${os.downloads}</div>
           <div class="stat-label">Downloads</div>
@@ -161,12 +216,9 @@ class OSDetail {
         </div>
       </div>
       
-      <div class="version-selector">
-        <div class="selector-label">Select Subtype:</div>
-        <div class="selector-grid" id="subtypeGrid">
-          ${this.renderSubtypeOptions()}
-        </div>
-      </div>
+      ${this.renderEditionSelector()}
+      ${this.renderArchitectureSelector()}
+      ${this.renderDeviceSelector()}
       
       <div class="download-options" id="downloadOptions">
         ${this.renderDownloadOptions()}
@@ -174,28 +226,145 @@ class OSDetail {
     `;
   }
 
-  renderSubtypeOptions() {
+  renderEditionSelector() {
     const currentType = this.osData.types[this.selectedType];
     if (!currentType) return '';
     
-    return Object.keys(currentType.subtypes).map(subtype => `
-      <div class="selector-option ${subtype === this.selectedSubtype ? 'active' : ''}" 
-           data-subtype="${subtype}">
-        <div class="option-label">${subtype}</div>
-        <div class="option-detail">${Object.keys(currentType.subtypes[subtype]).length} arch</div>
+    const editions = currentType.editions || currentType.subtypes;
+    if (!editions) return '';
+    
+    return `
+      <div class="version-selector">
+        <div class="selector-label">Select Edition:</div>
+        <div class="selector-grid" id="editionGrid">
+          ${Object.keys(editions).map(edition => {
+            const editionData = editions[edition];
+            const count = editionData.architectures ? 
+              Object.keys(editionData.architectures).length : 
+              Object.keys(editionData).length;
+            
+            return `
+              <div class="selector-option ${edition === this.selectedEdition ? 'active' : ''}" 
+                   data-edition="${edition}">
+                <div class="option-label">${edition}</div>
+                <div class="option-detail">${count} options</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
       </div>
-    `).join('');
+    `;
+  }
+  
+  renderArchitectureSelector() {
+    const currentType = this.osData.types[this.selectedType];
+    if (!currentType || !this.selectedEdition) return '';
+    
+    const editions = currentType.editions || currentType.subtypes;
+    const editionData = editions[this.selectedEdition];
+    if (!editionData) return '';
+    
+    const architectures = editionData.architectures || editionData;
+    if (!architectures || this.getStructureDepth(currentType) < 3) return '';
+    
+    return `
+      <div class="version-selector">
+        <div class="selector-label">Select Architecture:</div>
+        <div class="selector-grid" id="architectureGrid">
+          ${Object.keys(architectures).map(arch => {
+            const archData = architectures[arch];
+            const count = this.hasDevices(archData) ? 
+              Object.keys(archData).length : 1;
+            
+            return `
+              <div class="selector-option ${arch === this.selectedArchitecture ? 'active' : ''}" 
+                   data-architecture="${arch}">
+                <div class="option-label">${arch}</div>
+                <div class="option-detail">${count} ${this.hasDevices(archData) ? 'devices' : 'option'}</div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+    `;
+  }
+  
+  renderDeviceSelector() {
+    const currentType = this.osData.types[this.selectedType];
+    if (!currentType || !this.selectedEdition || !this.selectedArchitecture) return '';
+    
+    const editions = currentType.editions || currentType.subtypes;
+    const editionData = editions[this.selectedEdition];
+    const architectures = editionData.architectures || editionData;
+    const archData = architectures[this.selectedArchitecture];
+    
+    if (!this.hasDevices(archData)) return '';
+    
+    return `
+      <div class="version-selector">
+        <div class="selector-label">Select Device:</div>
+        <div class="selector-grid" id="deviceGrid">
+          ${Object.keys(archData).map(device => `
+            <div class="selector-option ${device === this.selectedDevice ? 'active' : ''}" 
+                 data-device="${device}">
+              <div class="option-label">${device}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
   }
 
   renderDownloadOptions() {
     const currentType = this.osData.types[this.selectedType];
-    if (!currentType || !currentType.subtypes[this.selectedSubtype]) return '';
+    if (!currentType || !this.selectedEdition) return '';
     
-    const architectures = currentType.subtypes[this.selectedSubtype];
-    return Object.entries(architectures).map(([arch, data]) => `
+    const editions = currentType.editions || currentType.subtypes;
+    const editionData = editions[this.selectedEdition];
+    if (!editionData) return '';
+    
+    const depth = this.getStructureDepth(currentType);
+    let downloadData, namePrefix;
+    
+    if (depth === 4) {
+      if (!this.selectedArchitecture || !this.selectedDevice) return '';
+      const architectures = editionData.architectures;
+      const archData = architectures[this.selectedArchitecture];
+      downloadData = archData[this.selectedDevice];
+      namePrefix = `${this.selectedType} - ${this.selectedEdition} - ${this.selectedArchitecture} - ${this.selectedDevice}`;
+    } else if (depth === 3) {
+      if (!this.selectedArchitecture) return '';
+      const architectures = editionData.architectures || editionData;
+      downloadData = architectures[this.selectedArchitecture];
+      namePrefix = `${this.selectedType} - ${this.selectedEdition} - ${this.selectedArchitecture}`;
+    } else {
+      downloadData = editionData;
+      namePrefix = `${this.selectedType} - ${this.selectedEdition}`;
+    }
+    
+    if (!downloadData) return '';
+    
+    // If downloadData has file/size/url properties, it's a single download
+    if (downloadData.file) {
+      return `
+        <div class="download-item">
+          <div class="download-info">
+            <div class="download-name">${namePrefix}</div>
+            <div class="download-size">${downloadData.size}</div>
+          </div>
+          <button class="download-btn" onclick="window.open('${downloadData.url}', '_blank')">
+            <i class="fas fa-download"></i>
+            Download
+          </button>
+        </div>
+      `;
+    }
+    
+    // Multiple downloads
+    return Object.entries(downloadData).map(([key, data]) => `
       <div class="download-item">
         <div class="download-info">
-          <div class="download-name">${this.selectedType} - ${this.selectedSubtype} (${arch})</div>
+          <div class="download-name">${namePrefix} (${key})</div>
           <div class="download-size">${data.size}</div>
         </div>
         <button class="download-btn" onclick="window.open('${data.url}', '_blank')">
@@ -211,8 +380,31 @@ class OSDetail {
     const os = this.osData;
     
     const totalTypes = os.types ? Object.keys(os.types).length : 0;
-    const totalSubtypes = os.types ? 
-      Object.values(os.types).reduce((acc, type) => acc + Object.keys(type.subtypes).length, 0) : 0;
+    let totalEditions = 0;
+    let totalArchitectures = 0;
+    let totalDevices = 0;
+    
+    if (os.types) {
+      Object.values(os.types).forEach(type => {
+        const editions = type.editions || type.subtypes;
+        if (editions) {
+          totalEditions += Object.keys(editions).length;
+          Object.values(editions).forEach(edition => {
+            const architectures = edition.architectures || edition;
+            if (edition.architectures) {
+              totalArchitectures += Object.keys(architectures).length;
+              Object.values(architectures).forEach(arch => {
+                if (this.hasDevices(arch)) {
+                  totalDevices += Object.keys(arch).length;
+                }
+              });
+            } else if (this.hasSubsubtypes(architectures)) {
+              totalArchitectures += Object.keys(architectures).length;
+            }
+          });
+        }
+      });
+    }
     
     infoList.innerHTML = `
       <li class="info-item">
@@ -224,9 +416,19 @@ class OSDetail {
         <span class="info-value">${totalTypes}</span>
       </li>
       <li class="info-item">
-        <span class="info-label">Subtypes</span>
-        <span class="info-value">${totalSubtypes}</span>
+        <span class="info-label">Editions</span>
+        <span class="info-value">${totalEditions}</span>
       </li>
+      ${totalArchitectures > 0 ? `
+      <li class="info-item">
+        <span class="info-label">Architectures</span>
+        <span class="info-value">${totalArchitectures}</span>
+      </li>` : ''}
+      ${totalDevices > 0 ? `
+      <li class="info-item">
+        <span class="info-label">Devices</span>
+        <span class="info-value">${totalDevices}</span>
+      </li>` : ''}
       <li class="info-item">
         <span class="info-label">Downloads</span>
         <span class="info-value">${os.downloads}</span>
@@ -257,26 +459,95 @@ class OSDetail {
         
         this.selectedType = type;
         
-        // Reset subtype to first available
+        // Reset selections to first available
         const typeData = this.osData.types[type];
         if (typeData) {
-          this.selectedSubtype = Object.keys(typeData.subtypes)[0];
+          const editions = typeData.editions || typeData.subtypes;
+          this.selectedEdition = Object.keys(editions)[0];
+          
+          const editionData = editions[this.selectedEdition];
+          if (editionData.architectures) {
+            this.selectedArchitecture = Object.keys(editionData.architectures)[0];
+            const archData = editionData.architectures[this.selectedArchitecture];
+            this.selectedDevice = this.hasDevices(archData) ? Object.keys(archData)[0] : null;
+          } else if (this.hasSubsubtypes(editionData)) {
+            this.selectedArchitecture = Object.keys(editionData)[0];
+            this.selectedDevice = null;
+          } else {
+            this.selectedArchitecture = null;
+            this.selectedDevice = null;
+          }
         }
         
         // Re-render download section
         this.renderDownloadSection();
       }
       
-      if (e.target.closest('[data-subtype]')) {
-        const option = e.target.closest('[data-subtype]');
-        const subtype = option.dataset.subtype;
+      if (e.target.closest('[data-edition]')) {
+        const option = e.target.closest('[data-edition]');
+        const edition = option.dataset.edition;
         
-        this.selectedSubtype = subtype;
+        this.selectedEdition = edition;
         
-        // Update subtype selection UI
-        document.querySelectorAll('[data-subtype]').forEach(opt => {
-          opt.classList.remove('active');
-        });
+        // Reset dependent selections
+        const currentType = this.osData.types[this.selectedType];
+        const editions = currentType.editions || currentType.subtypes;
+        const editionData = editions[edition];
+        
+        if (editionData.architectures) {
+          this.selectedArchitecture = Object.keys(editionData.architectures)[0];
+          const archData = editionData.architectures[this.selectedArchitecture];
+          this.selectedDevice = this.hasDevices(archData) ? Object.keys(archData)[0] : null;
+        } else if (this.hasSubsubtypes(editionData)) {
+          this.selectedArchitecture = Object.keys(editionData)[0];
+          this.selectedDevice = null;
+        } else {
+          this.selectedArchitecture = null;
+          this.selectedDevice = null;
+        }
+        
+        // Update UI
+        document.querySelectorAll('[data-edition]').forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        
+        this.renderDownloadSection();
+      }
+      
+      if (e.target.closest('[data-architecture]')) {
+        const option = e.target.closest('[data-architecture]');
+        const architecture = option.dataset.architecture;
+        
+        this.selectedArchitecture = architecture;
+        
+        // Reset device selection
+        const currentType = this.osData.types[this.selectedType];
+        const editions = currentType.editions || currentType.subtypes;
+        const editionData = editions[this.selectedEdition];
+        const architectures = editionData.architectures || editionData;
+        const archData = architectures[architecture];
+        
+        this.selectedDevice = this.hasDevices(archData) ? Object.keys(archData)[0] : null;
+        
+        // Update UI
+        document.querySelectorAll('[data-architecture]').forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        
+        // Re-render device selector and download options
+        const deviceSelector = document.getElementById('deviceGrid');
+        if (deviceSelector) {
+          deviceSelector.parentElement.outerHTML = this.renderDeviceSelector();
+        }
+        document.getElementById('downloadOptions').innerHTML = this.renderDownloadOptions();
+      }
+      
+      if (e.target.closest('[data-device]')) {
+        const option = e.target.closest('[data-device]');
+        const device = option.dataset.device;
+        
+        this.selectedDevice = device;
+        
+        // Update UI
+        document.querySelectorAll('[data-device]').forEach(opt => opt.classList.remove('active'));
         option.classList.add('active');
         
         // Update download options
@@ -284,6 +555,48 @@ class OSDetail {
       }
     });
   }
+  
+  hasSubsubtypes(subtypeData) {
+    if (!subtypeData || typeof subtypeData !== 'object') return false;
+    
+    // Check if any value is an object with nested structure
+    return Object.values(subtypeData).some(value => 
+      typeof value === 'object' && 
+      value !== null && 
+      !value.hasOwnProperty('file') && 
+      !value.hasOwnProperty('size') && 
+      !value.hasOwnProperty('url')
+    );
+  }
+  
+  hasDevices(archData) {
+    if (!archData || typeof archData !== 'object') return false;
+    
+    return Object.values(archData).some(value => 
+      typeof value === 'object' && 
+      value !== null && 
+      !value.hasOwnProperty('file') && 
+      !value.hasOwnProperty('size') && 
+      !value.hasOwnProperty('url')
+    );
+  }
+  
+  getStructureDepth(typeData) {
+    if (typeData.editions) {
+      const edition = typeData.editions[Object.keys(typeData.editions)[0]];
+      if (edition.architectures) {
+        const arch = edition.architectures[Object.keys(edition.architectures)[0]];
+        return this.hasDevices(arch) ? 4 : 3;
+      }
+      return 2;
+    } else if (typeData.subtypes) {
+      const subtype = typeData.subtypes[Object.keys(typeData.subtypes)[0]];
+      return this.hasSubsubtypes(subtype) ? 3 : 2;
+    }
+    return 1;
+  }
+  
+
 
 
 
