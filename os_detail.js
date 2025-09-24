@@ -3,6 +3,7 @@ class OSDetail {
   constructor() {
     this.osData = null;
     this.selectedType = null;
+    this.selectedSubtype = null;
     this.init();
   }
 
@@ -20,7 +21,11 @@ class OSDetail {
     const storedData = localStorage.getItem('selectedOS');
     if (storedData) {
       this.osData = JSON.parse(storedData);
-      this.selectedType = this.osData.defaultType || (this.osData.typeOptions && this.osData.typeOptions[0]?.value);
+      if (this.osData.types && Object.keys(this.osData.types).length > 0) {
+        this.selectedType = Object.keys(this.osData.types)[0];
+        const firstSubtype = Object.keys(this.osData.types[this.selectedType].subtypes)[0];
+        this.selectedSubtype = firstSubtype;
+      }
     }
   }
 
@@ -81,11 +86,16 @@ class OSDetail {
       `<img src="${os.icon}" alt="${os.name}" style="width: 48px; height: 48px; object-fit: contain;">` : 
       `<i class="${os.icon}"></i>`;
 
+    // Calculate stats
+    const totalTypes = os.types ? Object.keys(os.types).length : 0;
+    const totalSubtypes = os.types ? 
+      Object.values(os.types).reduce((acc, type) => acc + Object.keys(type.subtypes).length, 0) : 0;
+
     // Render hero section
     const heroSection = document.getElementById('osHero');
     heroSection.innerHTML = `
       <div class="hero-header">
-        <div class="hero-icon" style="background: linear-gradient(135deg, ${os.iconColor}, ${this.adjustColor(os.iconColor, -20)})">
+        <div class="hero-icon" style="background: ${os.iconColor}">
           ${iconContent}
         </div>
         <div class="hero-info">
@@ -101,16 +111,16 @@ class OSDetail {
       
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="stat-value">${os.size}</div>
-          <div class="stat-label">File Size</div>
+          <div class="stat-value">${totalTypes}</div>
+          <div class="stat-label">Types</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">${totalSubtypes}</div>
+          <div class="stat-label">Subtypes</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">${os.downloads}</div>
           <div class="stat-label">Downloads</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-value">${os.rating}</div>
-          <div class="stat-label">Rating</div>
         </div>
         <div class="stat-card">
           <div class="stat-value">${os.verified ? 'Yes' : 'No'}</div>
@@ -123,40 +133,86 @@ class OSDetail {
       </div>
     `;
 
-    // Render type selector
-    this.renderTypeSelector();
+    // Render download section
+    this.renderDownloadSection();
 
     // Render info sidebar
     this.renderInfoSidebar();
   }
 
-  renderTypeSelector() {
-    const typeSelector = document.getElementById('typeSelector');
+  renderDownloadSection() {
+    const downloadSection = document.getElementById('downloadSection');
     
-    if (!this.osData.typeOptions || this.osData.typeOptions.length === 0) {
-      typeSelector.innerHTML = '<p style="color: #64748b; text-align: center;">No download options available for this OS.</p>';
+    if (!this.osData.types || Object.keys(this.osData.types).length === 0) {
+      downloadSection.innerHTML = '<p style="color: #64748b; text-align: center;">No download options available for this OS.</p>';
       return;
     }
 
-    typeSelector.innerHTML = `
-      <div class="type-options">
-        ${this.osData.typeOptions.map(option => `
-          <div class="type-option ${option.value === this.selectedType ? 'active' : ''}" 
-               data-type="${option.value}">
-            <div class="type-option-header">
-              <div class="type-option-label">${option.label}</div>
-              <div class="type-option-size">${this.osData.size}</div>
+    downloadSection.innerHTML = `
+      <div class="version-selector">
+        <div class="selector-label">Select Type:</div>
+        <div class="selector-grid">
+          ${Object.keys(this.osData.types).map(type => `
+            <div class="selector-option ${type === this.selectedType ? 'active' : ''}" 
+                 data-type="${type}">
+              <div class="option-label">${type}</div>
             </div>
-            <div class="type-option-desc">${option.description}</div>
-          </div>
-        `).join('')}
+          `).join('')}
+        </div>
+      </div>
+      
+      <div class="version-selector">
+        <div class="selector-label">Select Subtype:</div>
+        <div class="selector-grid" id="subtypeGrid">
+          ${this.renderSubtypeOptions()}
+        </div>
+      </div>
+      
+      <div class="download-options" id="downloadOptions">
+        ${this.renderDownloadOptions()}
       </div>
     `;
+  }
+
+  renderSubtypeOptions() {
+    const currentType = this.osData.types[this.selectedType];
+    if (!currentType) return '';
+    
+    return Object.keys(currentType.subtypes).map(subtype => `
+      <div class="selector-option ${subtype === this.selectedSubtype ? 'active' : ''}" 
+           data-subtype="${subtype}">
+        <div class="option-label">${subtype}</div>
+        <div class="option-detail">${Object.keys(currentType.subtypes[subtype]).length} arch</div>
+      </div>
+    `).join('');
+  }
+
+  renderDownloadOptions() {
+    const currentType = this.osData.types[this.selectedType];
+    if (!currentType || !currentType.subtypes[this.selectedSubtype]) return '';
+    
+    const architectures = currentType.subtypes[this.selectedSubtype];
+    return Object.entries(architectures).map(([arch, data]) => `
+      <div class="download-item">
+        <div class="download-info">
+          <div class="download-name">${this.selectedType} - ${this.selectedSubtype} (${arch})</div>
+          <div class="download-size">${data.size}</div>
+        </div>
+        <button class="download-btn" onclick="window.open('${data.url}', '_blank')">
+          <i class="fas fa-download"></i>
+          Download
+        </button>
+      </div>
+    `).join('');
   }
 
   renderInfoSidebar() {
     const infoList = document.getElementById('infoList');
     const os = this.osData;
+    
+    const totalTypes = os.types ? Object.keys(os.types).length : 0;
+    const totalSubtypes = os.types ? 
+      Object.values(os.types).reduce((acc, type) => acc + Object.keys(type.subtypes).length, 0) : 0;
     
     infoList.innerHTML = `
       <li class="info-item">
@@ -164,8 +220,12 @@ class OSDetail {
         <span class="info-value">${os.category.charAt(0).toUpperCase() + os.category.slice(1)}</span>
       </li>
       <li class="info-item">
-        <span class="info-label">File Size</span>
-        <span class="info-value">${os.size}</span>
+        <span class="info-label">Total Types</span>
+        <span class="info-value">${totalTypes}</span>
+      </li>
+      <li class="info-item">
+        <span class="info-label">Subtypes</span>
+        <span class="info-value">${totalSubtypes}</span>
       </li>
       <li class="info-item">
         <span class="info-label">Downloads</span>
@@ -185,48 +245,47 @@ class OSDetail {
           ${os.verified ? '<span class="verified-badge"><i class="fas fa-shield-check"></i> Verified</span>' : 'Not Verified'}
         </span>
       </li>
-      <li class="info-item">
-        <span class="info-label">File Name</span>
-        <span class="info-value" style="font-size: 0.8rem; word-break: break-all;">${os.file}</span>
-      </li>
     `;
   }
 
   setupEventListeners() {
-    // Type option selection
+    // Type and subtype selection
     document.addEventListener('click', (e) => {
-      if (e.target.closest('.type-option')) {
-        const option = e.target.closest('.type-option');
+      if (e.target.closest('[data-type]')) {
+        const option = e.target.closest('[data-type]');
         const type = option.dataset.type;
         
-        // Update selected type
         this.selectedType = type;
         
-        // Update UI
-        document.querySelectorAll('.type-option').forEach(opt => {
+        // Reset subtype to first available
+        const typeData = this.osData.types[type];
+        if (typeData) {
+          this.selectedSubtype = Object.keys(typeData.subtypes)[0];
+        }
+        
+        // Re-render download section
+        this.renderDownloadSection();
+      }
+      
+      if (e.target.closest('[data-subtype]')) {
+        const option = e.target.closest('[data-subtype]');
+        const subtype = option.dataset.subtype;
+        
+        this.selectedSubtype = subtype;
+        
+        // Update subtype selection UI
+        document.querySelectorAll('[data-subtype]').forEach(opt => {
           opt.classList.remove('active');
         });
         option.classList.add('active');
+        
+        // Update download options
+        document.getElementById('downloadOptions').innerHTML = this.renderDownloadOptions();
       }
     });
-
-    // Download button
-    document.getElementById('downloadBtn').addEventListener('click', () => {
-      this.handleDownload();
-    });
   }
 
-  handleDownload() {
-    const os = this.osData;
-    const selectedTypeData = this.selectedType ? 
-      os.typeOptions.find(t => t.value === this.selectedType) : null;
-    
-    const url = os.fileUrl || `assets/os/${encodeURIComponent(os.file)}`;
-    const message = `Downloading ${os.name}${selectedTypeData ? ` (${selectedTypeData.label})` : ''}...`;
-    
-    this.showNotification(message, 'success');
-    window.open(url, '_blank');
-  }
+
 
   showNotification(message, type = 'info') {
     const notification = document.createElement('div');
