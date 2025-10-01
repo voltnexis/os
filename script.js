@@ -1,35 +1,141 @@
-// VoltNexis OS Hub - Minimal Cards JavaScript
+// VoltNexis OS Hub - Comprehensive OS Database
 class OSHub {
   constructor() {
     this.osFiles = [
+      // Linux - Debian-Based
       {
-        id: 'android-x86',
-        name: 'Android x86',
-        description: 'Android OS optimized for x86 PCs with full Google Play support and hardware acceleration.',
-        category: 'android',
-        icon: 'assets/icons/android.png',
-        iconColor: '#3DDC84',
+        id: 'debian',
+        name: 'Debian',
+        description: 'The universal operating system - stable, secure, and completely free.',
+        category: 'linux',
+        icon: 'assets/icons/debian.webp',
+        iconColor: '#A81D33',
         verified: true,
-        rating: 4.5,
-        downloads: '2.1M',
-        lastUpdated: '2023-12-15',
+        rating: 4.6,
+        downloads: '8.2M',
+        lastUpdated: '2024-11-30',
         types: {
-          'Live': {
-            subtypes: {
-              'Standard': {
-                '32bit': { file: 'android-x86-9.0-r2-live.iso', size: '845 MB', url: 'assets/os/android-x86-9.0-r2-live.iso' },
-                '64bit': { file: 'android-x86_64-9.0-r2-live.iso', size: '922 MB', url: 'assets/os/android-x86_64-9.0-r2-live.iso' }
-              },
+          'NetInstall': {
+            editions: {
               'Minimal': {
-                '64bit': { file: 'android-x86_64-9.0-r2-live-minimal.iso', size: '680 MB', url: 'assets/os/android-x86_64-9.0-r2-live-minimal.iso' }
+                architectures: {
+                  'amd64': { 'ISO': { file: 'debian-12.8.0-amd64-netinst.iso', size: '650 MB', url: 'assets/os/debian-12.8.0-amd64-netinst.iso' } },
+                  'arm64': { 'ISO': { file: 'debian-12.8.0-arm64-netinst.iso', size: '620 MB', url: 'assets/os/debian-12.8.0-arm64-netinst.iso' } },
+                  'i386': { 'ISO': { file: 'debian-12.8.0-i386-netinst.iso', size: '640 MB', url: 'assets/os/debian-12.8.0-i386-netinst.iso' } }
+                }
               }
             }
           },
-          'Installer': {
-            subtypes: {
-              'Full': {
-                '32bit': { file: 'android-x86-9.0-r2-installer.iso', size: '980 MB', url: 'assets/os/android-x86-9.0-r2-installer.iso' },
-                '64bit': { file: 'android-x86_64-9.0-r2-installer.iso', size: '1.1 GB', url: 'assets/os/android-x86_64-9.0-r2-installer.iso' }
+          'Live': {
+            editions: {
+              'GNOME': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'debian-live-12.8.0-amd64-gnome.iso', size: '3.1 GB', url: 'assets/os/debian-live-12.8.0-amd64-gnome.iso' } },
+                  'i386': { 'ISO': { file: 'debian-live-12.8.0-i386-gnome.iso', size: '3.0 GB', url: 'assets/os/debian-live-12.8.0-i386-gnome.iso' } }
+                }
+              }
+            }
+          },
+          'Installer DVD': {
+            editions: {
+              'Complete': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'debian-12.8.0-amd64-DVD-1.iso', size: '3.7 GB', url: 'assets/os/debian-12.8.0-amd64-DVD-1.iso' } },
+                  'arm64': { 'ISO': { file: 'debian-12.8.0-arm64-DVD-1.iso', size: '3.6 GB', url: 'assets/os/debian-12.8.0-arm64-DVD-1.iso' } },
+                  'i386': { 'ISO': { file: 'debian-12.8.0-i386-DVD-1.iso', size: '3.5 GB', url: 'assets/os/debian-12.8.0-i386-DVD-1.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'ubuntu',
+        name: 'Ubuntu',
+        description: 'User-friendly Linux distribution perfect for beginners and professionals.',
+        category: 'linux',
+        icon: 'assets/icons/ubuntu.webp',
+        iconColor: '#E95420',
+        verified: true,
+        rating: 4.7,
+        downloads: '12.3M',
+        lastUpdated: '2024-12-20',
+        types: {
+          'Desktop': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'ubuntu-24.04.2-desktop-amd64.iso', size: '4.6 GB', url: 'assets/os/ubuntu-24.04.2-desktop-amd64.iso' } },
+                  'arm64': { 'ISO': { file: 'ubuntu-24.04.2-desktop-arm64.iso', size: '4.4 GB', url: 'assets/os/ubuntu-24.04.2-desktop-arm64.iso' } }
+                }
+              }
+            }
+          },
+          'Server': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'ubuntu-24.04.2-server-amd64.iso', size: '2.1 GB', url: 'assets/os/ubuntu-24.04.2-server-amd64.iso' } },
+                  'arm64': { 'ISO': { file: 'ubuntu-24.04.2-server-arm64.iso', size: '2.0 GB', url: 'assets/os/ubuntu-24.04.2-server-arm64.iso' } }
+                }
+              }
+            }
+          },
+          'Flavours': {
+            editions: {
+              'Kubuntu': { architectures: { 'amd64': { 'ISO': { file: 'kubuntu-24.04.2-desktop-amd64.iso', size: '4.2 GB', url: 'assets/os/kubuntu-24.04.2-desktop-amd64.iso' } } } },
+              'Xubuntu': { architectures: { 'amd64': { 'ISO': { file: 'xubuntu-24.04.2-desktop-amd64.iso', size: '3.8 GB', url: 'assets/os/xubuntu-24.04.2-desktop-amd64.iso' } } } },
+              'Lubuntu': { architectures: { 'amd64': { 'ISO': { file: 'lubuntu-24.04.2-desktop-amd64.iso', size: '3.2 GB', url: 'assets/os/lubuntu-24.04.2-desktop-amd64.iso' } } } },
+              'Ubuntu Budgie': { architectures: { 'amd64': { 'ISO': { file: 'ubuntu-budgie-24.04.2-desktop-amd64.iso', size: '4.0 GB', url: 'assets/os/ubuntu-budgie-24.04.2-desktop-amd64.iso' } } } },
+              'Ubuntu Studio': { architectures: { 'amd64': { 'ISO': { file: 'ubuntustudio-24.04.2-dvd-amd64.iso', size: '5.2 GB', url: 'assets/os/ubuntustudio-24.04.2-dvd-amd64.iso' } } } },
+              'Ubuntu MATE': { architectures: { 'amd64': { 'ISO': { file: 'ubuntu-mate-24.04.2-desktop-amd64.iso', size: '4.1 GB', url: 'assets/os/ubuntu-mate-24.04.2-desktop-amd64.iso' } } } },
+              'Ubuntu Kylin': { architectures: { 'amd64': { 'ISO': { file: 'ubuntukylin-24.04.2-desktop-amd64.iso', size: '4.3 GB', url: 'assets/os/ubuntukylin-24.04.2-desktop-amd64.iso' } } } }
+            }
+          },
+          'Cloud': {
+            editions: {
+              'Cloud Images': { architectures: { 'amd64': { 'QCOW2': { file: 'ubuntu-24.04-server-cloudimg-amd64.img', size: '700 MB', url: 'assets/os/ubuntu-24.04-server-cloudimg-amd64.img' } } } },
+              'WSL': { architectures: { 'x64': { 'AppX': { file: 'ubuntu-24.04-wsl.appx', size: '450 MB', url: 'assets/os/ubuntu-24.04-wsl.appx' } } } }
+            }
+          }
+        }
+      },
+      {
+        id: 'linux-mint',
+        name: 'Linux Mint',
+        description: 'Elegant, easy to use, up to date and comfortable desktop operating system.',
+        category: 'linux',
+        icon: 'assets/icons/mint.webp',
+        iconColor: '#87CF3E',
+        verified: true,
+        rating: 4.8,
+        downloads: '5.4M',
+        lastUpdated: '2024-12-15',
+        types: {
+          'Cinnamon': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'linuxmint-22.1-cinnamon-64bit.iso', size: '3.1 GB', url: 'assets/os/linuxmint-22.1-cinnamon-64bit.iso' } }
+                }
+              }
+            }
+          },
+          'MATE': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'linuxmint-22.1-mate-64bit.iso', size: '2.9 GB', url: 'assets/os/linuxmint-22.1-mate-64bit.iso' } }
+                }
+              }
+            }
+          },
+          'XFCE': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'linuxmint-22.1-xfce-64bit.iso', size: '2.7 GB', url: 'assets/os/linuxmint-22.1-xfce-64bit.iso' } }
+                }
               }
             }
           }
@@ -40,42 +146,18 @@ class OSHub {
         name: 'Parrot OS',
         description: 'Debian-based Linux distribution focused on security, privacy, and development.',
         category: 'security',
-        icon: 'assets/icons/parrot.png',
+        icon: 'assets/icons/parrot.webp',
         iconColor: '#1E90FF',
         verified: true,
         rating: 4.7,
         downloads: '3.5M',
-        lastUpdated: '2025-07-07',
+        lastUpdated: '2025-01-07',
         types: {
           'Live': {
             editions: {
-              'Security': {
-                architectures: {
-                  'amd64': {
-                    'ISO': { file: 'Parrot-security-6.4_amd64.iso', size: '5.4 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso' },
-                    'Torrent': { file: 'Parrot-security-6.4_amd64.iso.torrent', size: '12 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso.torrent' },
-                    'Hashes': { file: 'Parrot-security-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso.hashes' }
-                  }
-                }
-              },
-              'Home': {
-                architectures: {
-                  'amd64': {
-                    'ISO': { file: 'Parrot-home-6.4_amd64.iso', size: '2.5 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso' },
-                    'Torrent': { file: 'Parrot-home-6.4_amd64.iso.torrent', size: '8 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso.torrent' },
-                    'Hashes': { file: 'Parrot-home-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso.hashes' }
-                  }
-                }
-              },
-              'HTB': {
-                architectures: {
-                  'amd64': {
-                    'ISO': { file: 'Parrot-htb-6.4_amd64.iso', size: '4.8 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso' },
-                    'Torrent': { file: 'Parrot-htb-6.4_amd64.iso.torrent', size: '10 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso.torrent' },
-                    'Hashes': { file: 'Parrot-htb-6.4_amd64.iso.hashes', size: '1 KB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso.hashes' }
-                  }
-                }
-              }
+              'Security': { architectures: { 'amd64': { 'ISO': { file: 'Parrot-security-6.4_amd64.iso', size: '5.4 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-security-6.4_amd64.iso' } } } },
+              'Home': { architectures: { 'amd64': { 'ISO': { file: 'Parrot-home-6.4_amd64.iso', size: '2.5 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-home-6.4_amd64.iso' } } } },
+              'HTB': { architectures: { 'amd64': { 'ISO': { file: 'Parrot-htb-6.4_amd64.iso', size: '4.8 GB', url: 'https://deb.parrot.sh/parrot/iso/6.4/Parrot-htb-6.4_amd64.iso' } } } }
             }
           },
           'Virtual': {
@@ -83,38 +165,10 @@ class OSHub {
               'Security': {
                 architectures: {
                   'amd64': {
-                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
-                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
-
-                  },
-                  'arm64': {
-                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
-                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
-                  }
-                }
-              },
-              'Home': {
-                architectures: {
-                  'amd64': {
-                    'UTM (apple silicon)(utm.zip)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
-                    'UTM (apple silicon)(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(utm.zip)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
-
-                  },
-                  'arm64': {
-                    'VirtualBox(OVA)': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
-                    'VirtualBox(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(OVA)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'VMWare(Torrent)': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
-                    'Hashes': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' }
+                    'OVA': { file: 'Parrot-security-6.4_amd64.ova', size: '3.8 GB', url: 'assets/os/Parrot-security-6.4_amd64.ova' },
+                    'QCOW2': { file: 'Parrot-security-6.4_amd64.qcow2', size: '3.5 GB', url: 'assets/os/Parrot-security-6.4_amd64.qcow2' },
+                    'VDI': { file: 'Parrot-security-6.4_amd64.vdi', size: '3.6 GB', url: 'assets/os/Parrot-security-6.4_amd64.vdi' },
+                    'VMDK': { file: 'Parrot-security-6.4_amd64.vmdk', size: '3.7 GB', url: 'assets/os/Parrot-security-6.4_amd64.vmdk' }
                   }
                 }
               }
@@ -122,46 +176,97 @@ class OSHub {
           },
           'IoT': {
             editions: {
-              'Security': {
+              'Security': { architectures: { 'RaspberryPi': { 'IMG': { file: 'Parrot-security-6.4_rpi.img.xz', size: '1.8 GB', url: 'assets/os/Parrot-security-6.4_rpi.img.xz' } } } },
+              'Home': { architectures: { 'RaspberryPi': { 'IMG': { file: 'Parrot-home-6.4_rpi.img.xz', size: '1.1 GB', url: 'assets/os/Parrot-home-6.4_rpi.img.xz' } } } },
+              'Core': { architectures: { 'RaspberryPi': { 'IMG': { file: 'Parrot-core-6.4_rpi.img.xz', size: '800 MB', url: 'assets/os/Parrot-core-6.4_rpi.img.xz' } } } }
+            }
+          }
+        }
+      },
+      {
+        id: 'kali-linux',
+        name: 'Kali Linux',
+        description: 'Advanced penetration testing and security auditing distribution.',
+        category: 'security',
+        icon: 'assets/icons/kali.webp',
+        iconColor: '#557C94',
+        verified: true,
+        rating: 4.8,
+        downloads: '5.7M',
+        lastUpdated: '2025-01-10',
+        types: {
+          'Installer': {
+            editions: {
+              'Standard': {
                 architectures: {
-                  'RaspberryPi': {
-                    'IMG': { file: 'Parrot-security-6.4_rpi.img.xz', size: '1.8 GB', url: 'assets/os/Parrot-security-6.4_rpi.img.xz' },
-                    'Hashes': { file: 'Parrot-security-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-security-6.4_rpi.img.xz.hashes' }
+                  'amd64': { 
+                    'ISO': { file: 'kali-linux-2025.3-installer-amd64.iso', size: '4.2 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-installer-amd64.iso' },
+                    'Weekly': { file: 'kali-linux-2025-W39-installer-amd64.iso', size: '4.2 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-installer-amd64.iso' }
+                  },
+                  'arm64': { 
+                    'ISO': { file: 'kali-linux-2025.3-installer-arm64.iso', size: '3.8 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-installer-arm64.iso' },
+                    'Weekly': { file: 'kali-linux-2025-W39-installer-arm64.iso', size: '3.8 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-installer-arm64.iso' }
                   }
                 }
               },
-              'Home': {
+              'Netinstall': {
                 architectures: {
-                  'RaspberryPi': {
-                    'IMG': { file: 'Parrot-home-6.4_rpi.img.xz', size: '1.1 GB', url: 'assets/os/Parrot-home-6.4_rpi.img.xz' },
-                    'Hashes': { file: 'Parrot-home-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-home-6.4_rpi.img.xz.hashes' }
-                  }
+                  'amd64': { 'ISO': { file: 'kali-linux-2025.3-installer-netinst-amd64.iso', size: '600 MB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-installer-netinst-amd64.iso' } },
+                  'arm64': { 'ISO': { file: 'kali-linux-2025.3-installer-netinst-arm64.iso', size: '550 MB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-installer-netinst-arm64.iso' } }
                 }
               },
-              'Core': {
+              'Purple': {
                 architectures: {
-                  'RaspberryPi': {
-                    'IMG': { file: 'Parrot-core-6.4_rpi.img.xz', size: '800 MB', url: 'assets/os/Parrot-core-6.4_rpi.img.xz' },
-                    'Hashes': { file: 'Parrot-core-6.4_rpi.img.xz.hashes', size: '1 KB', url: 'assets/os/Parrot-core-6.4_rpi.img.xz.hashes' }
+                  'amd64': { 
+                    'ISO': { file: 'kali-linux-2025.3-installer-purple-amd64.iso', size: '4.5 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-installer-purple-amd64.iso' },
+                    'Weekly': { file: 'kali-linux-2025-W39-installer-purple-amd64.iso', size: '4.5 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-installer-purple-amd64.iso' }
                   }
                 }
               }
             }
           },
-          'Other': {
+          'Virtual': {
             editions: {
-              'WSL': {
-                architectures: {
-                  'x64': {
-                    'WSL': { file: 'parrot-core-6.4.wsl', size: '1.2 GB', url: 'assets/os/parrot-core-6.4.wsl' }
-                  }
-                }
+              'VMware': { 
+                architectures: { 
+                  'amd64': { 
+                    '7Z': { file: 'kali-linux-2025.3-vmware-amd64.7z', size: '3.2 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-vmware-amd64.7z' },
+                    'Weekly': { file: 'kali-linux-2025-W39-vmware-amd64.7z', size: '3.2 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-vmware-amd64.7z' }
+                  } 
+                } 
               },
-              'UTM': {
+              'VirtualBox': { 
+                architectures: { 
+                  'amd64': { 
+                    '7Z': { file: 'kali-linux-2025.3-virtualbox-amd64.7z', size: '3.1 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-virtualbox-amd64.7z' },
+                    'Weekly': { file: 'kali-linux-2025-W39-virtualbox-amd64.7z', size: '3.1 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-virtualbox-amd64.7z' }
+                  } 
+                } 
+              },
+              'Hyper-V': { 
+                architectures: { 
+                  'amd64': { 
+                    '7Z': { file: 'kali-linux-2025.3-hyperv-amd64.7z', size: '3.0 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-hyperv-amd64.7z' },
+                    'Weekly': { file: 'kali-linux-2025-W39-hyperv-amd64.7z', size: '3.0 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-hyperv-amd64.7z' }
+                  } 
+                } 
+              },
+              'QEMU': { 
+                architectures: { 
+                  'amd64': { 
+                    '7Z': { file: 'kali-linux-2025.3-qemu-amd64.7z', size: '2.9 GB', url: 'https://cdimage.kali.org/kali-2025.3/kali-linux-2025.3-qemu-amd64.7z' },
+                    'Weekly': { file: 'kali-linux-2025-W39-qemu-amd64.7z', size: '2.9 GB', url: 'https://cdimage.kali.org/kali-weekly/kali-linux-2025-W39-qemu-amd64.7z' }
+                  } 
+                } 
+              }
+            }
+          },
+          'ARM': {
+            editions: {
+              'Raspberry Pi': {
                 architectures: {
-                  'arm64': {
-                    'UTM': { file: 'Parrot-home-6.4_arm64.utm.zip', size: '2.1 GB', url: 'assets/os/Parrot-home-6.4_arm64.utm.zip' }
-                  }
+                  'armhf': { 'IMG': { file: 'kali-linux-2025.3-raspberry-pi-armhf.img.xz', size: '1.2 GB', url: 'https://kali.download/arm-images/kali-2025.3/kali-linux-2025.3-raspberry-pi-armhf.img.xz' } },
+                  'arm64': { 'IMG': { file: 'kali-linux-2025.3-raspberry-pi-arm64.img.xz', size: '1.4 GB', url: 'https://kali.download/arm-images/kali-2025.3/kali-linux-2025.3-raspberry-pi-arm64.img.xz' } }
                 }
               }
             }
@@ -169,45 +274,124 @@ class OSHub {
         }
       },
       {
-        id: 'ubuntu-desktop',
-        name: 'Ubuntu Desktop',
-        description: 'User-friendly Linux distribution perfect for beginners and professionals with LTS support.',
-        category: 'linux',
-        icon: 'assets/icons/ubuntu.png',
-        iconColor: '#E95420',
+        id: 'tails',
+        name: 'Tails',
+        description: 'The Amnesic Incognito Live System - Privacy and anonymity for everyone.',
+        category: 'security',
+        icon: 'assets/icons/tails.webp',
+        iconColor: '#56347C',
         verified: true,
-        rating: 4.7,
-        downloads: '12.3M',
-        lastUpdated: '2024-12-20',
+        rating: 4.5,
+        downloads: '2.1M',
+        lastUpdated: '2024-12-10',
         types: {
-          'Desktop': {
-            subtypes: {
+          'Live': {
+            editions: {
               'Standard': {
-                '64bit': { file: 'ubuntu-24.04.2-desktop-amd64.iso', size: '4.6 GB', url: 'assets/os/ubuntu-24.04.2-desktop-amd64.iso' }
-              },
-              'Minimal': {
-                '64bit': { file: 'ubuntu-24.04.2-minimal-amd64.iso', size: '3.2 GB', url: 'assets/os/ubuntu-24.04.2-minimal-amd64.iso' }
+                architectures: {
+                  'amd64': { 'ISO': { file: 'tails-amd64-6.10.iso', size: '1.4 GB', url: 'assets/os/tails-amd64-6.10.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Linux - RedHat-Based
+      {
+        id: 'fedora',
+        name: 'Fedora',
+        description: 'Cutting-edge Linux distribution with latest features and technologies.',
+        category: 'linux',
+        icon: 'assets/icons/fedora.webp',
+        iconColor: '#294172',
+        verified: true,
+        rating: 4.5,
+        downloads: '6.8M',
+        lastUpdated: '2024-12-15',
+        types: {
+          'Workstation': {
+            editions: {
+              'GNOME': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'Fedora-Workstation-Live-x86_64-41.iso', size: '2.1 GB', url: 'assets/os/Fedora-Workstation-Live-x86_64-41.iso' } },
+                  'arm64': { 'ISO': { file: 'Fedora-Workstation-Live-aarch64-41.iso', size: '2.0 GB', url: 'assets/os/Fedora-Workstation-Live-aarch64-41.iso' } }
+                }
               }
             }
           },
           'Server': {
-            subtypes: {
+            editions: {
               'Standard': {
-                '64bit': { file: 'ubuntu-24.04.2-server-amd64.iso', size: '2.1 GB', url: 'assets/os/ubuntu-24.04.2-server-amd64.iso' }
+                architectures: {
+                  'amd64': { 'ISO': { file: 'Fedora-Server-dvd-x86_64-41.iso', size: '2.4 GB', url: 'assets/os/Fedora-Server-dvd-x86_64-41.iso' } },
+                  'arm64': { 'ISO': { file: 'Fedora-Server-dvd-aarch64-41.iso', size: '2.3 GB', url: 'assets/os/Fedora-Server-dvd-aarch64-41.iso' } }
+                }
+              }
+            }
+          },
+          'Silverblue': {
+            editions: {
+              'Immutable Desktop': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'Fedora-Silverblue-ostree-x86_64-41.iso', size: '2.2 GB', url: 'assets/os/Fedora-Silverblue-ostree-x86_64-41.iso' } }
+                }
+              }
+            }
+          },
+          'Spins': {
+            editions: {
+              'KDE': { architectures: { 'amd64': { 'ISO': { file: 'Fedora-KDE-Live-x86_64-41.iso', size: '2.2 GB', url: 'assets/os/Fedora-KDE-Live-x86_64-41.iso' } } } },
+              'XFCE': { architectures: { 'amd64': { 'ISO': { file: 'Fedora-Xfce-Live-x86_64-41.iso', size: '1.8 GB', url: 'assets/os/Fedora-Xfce-Live-x86_64-41.iso' } } } },
+              'LXQt': { architectures: { 'amd64': { 'ISO': { file: 'Fedora-LXQt-Live-x86_64-41.iso', size: '1.7 GB', url: 'assets/os/Fedora-LXQt-Live-x86_64-41.iso' } } } },
+              'Cinnamon': { architectures: { 'amd64': { 'ISO': { file: 'Fedora-Cinnamon-Live-x86_64-41.iso', size: '2.0 GB', url: 'assets/os/Fedora-Cinnamon-Live-x86_64-41.iso' } } } }
+            }
+          }
+        }
+      },
+      // Linux - Arch-Based
+      {
+        id: 'manjaro',
+        name: 'Manjaro',
+        description: 'User-friendly Arch Linux derivative with easy installation.',
+        category: 'linux',
+        icon: 'assets/icons/manjaro.webp',
+        iconColor: '#35BF5C',
+        verified: true,
+        rating: 4.4,
+        downloads: '4.2M',
+        lastUpdated: '2024-12-10',
+        types: {
+          'Desktop': {
+            editions: {
+              'KDE': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'manjaro-kde-24.2.0-241210-linux612.iso', size: '3.8 GB', url: 'assets/os/manjaro-kde-24.2.0-241210-linux612.iso' } },
+                  'arm64': { 'ISO': { file: 'manjaro-kde-24.2.0-241210-linux612-aarch64.iso', size: '3.6 GB', url: 'assets/os/manjaro-kde-24.2.0-241210-linux612-aarch64.iso' } }
+                }
               },
-              'Live Server': {
-                '64bit': { file: 'ubuntu-24.04.2-live-server-amd64.iso', size: '2.3 GB', url: 'assets/os/ubuntu-24.04.2-live-server-amd64.iso' }
+              'GNOME': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'manjaro-gnome-24.2.0-241210-linux612.iso', size: '3.5 GB', url: 'assets/os/manjaro-gnome-24.2.0-241210-linux612.iso' } },
+                  'arm64': { 'ISO': { file: 'manjaro-gnome-24.2.0-241210-linux612-aarch64.iso', size: '3.3 GB', url: 'assets/os/manjaro-gnome-24.2.0-241210-linux612-aarch64.iso' } }
+                }
+              },
+              'XFCE': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'manjaro-xfce-24.2.0-241210-linux612.iso', size: '3.2 GB', url: 'assets/os/manjaro-xfce-24.2.0-241210-linux612.iso' } },
+                  'arm64': { 'ISO': { file: 'manjaro-xfce-24.2.0-241210-linux612-aarch64.iso', size: '3.0 GB', url: 'assets/os/manjaro-xfce-24.2.0-241210-linux612-aarch64.iso' } }
+                }
               }
             }
           }
         }
       },
+      // Windows
       {
         id: 'windows-11',
         name: 'Windows 11',
-        description: 'Latest Windows 11 official ISO with enhanced security, performance, and AI features.',
+        description: 'Latest Windows 11 with enhanced security, performance, and AI features.',
         category: 'windows',
-        icon: 'assets/icons/windows.png',
+        icon: 'assets/icons/windows.webp',
         iconColor: '#0078D4',
         verified: true,
         rating: 4.3,
@@ -215,22 +399,369 @@ class OSHub {
         lastUpdated: '2024-11-15',
         types: {
           'Consumer': {
-            subtypes: {
-              'Home': {
-                '64bit': { file: 'Win11_23H2_Home_x64.iso', size: '5.6 GB', url: 'assets/os/Win11_23H2_Home_x64.iso' }
-              },
-              'Pro': {
-                '64bit': { file: 'Win11_23H2_Pro_x64.iso', size: '5.8 GB', url: 'assets/os/Win11_23H2_Pro_x64.iso' }
+            editions: {
+              'Home/Pro': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'Win11_24H2_English_x64v2.iso', size: '5.6 GB', url: 'assets/os/Win11_24H2_English_x64v2.iso' } },
+                  'arm64': { 'ISO': { file: 'Win11_24H2_English_ARM64.iso', size: '5.2 GB', url: 'assets/os/Win11_24H2_English_ARM64.iso' } }
+                }
               }
             }
           },
-          'Business': {
-            subtypes: {
-              'Enterprise': {
-                '64bit': { file: 'Win11_23H2_Enterprise_x64.iso', size: '6.1 GB', url: 'assets/os/Win11_23H2_Enterprise_x64.iso' }
-              },
-              'Education': {
-                '64bit': { file: 'Win11_23H2_Education_x64.iso', size: '5.9 GB', url: 'assets/os/Win11_23H2_Education_x64.iso' }
+          'Insider Preview': {
+            editions: {
+              'Dev Channel': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'Win11_InsiderPreview_Client_x64_en-us_26120.iso', size: '6.2 GB', url: 'assets/os/Win11_InsiderPreview_Client_x64_en-us_26120.iso' } },
+                  'arm64': { 'ISO': { file: 'Win11_InsiderPreview_Client_ARM64_en-us_26120.iso', size: '5.8 GB', url: 'assets/os/Win11_InsiderPreview_Client_ARM64_en-us_26120.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Android
+      {
+        id: 'lineageos',
+        name: 'LineageOS',
+        description: 'Privacy-focused Android ROM with enhanced performance.',
+        category: 'android',
+        icon: 'assets/icons/android.webp',
+        iconColor: '#167C80',
+        verified: true,
+        rating: 4.6,
+        downloads: '2.8M',
+        lastUpdated: '2024-12-01',
+        types: {
+          'Official Builds': {
+            editions: {
+              'LineageOS 21': {
+                architectures: {
+                  'arm64': {
+                    'Samsung Galaxy S21': { file: 'lineage-21.0-20241201-NIGHTLY-o1s.zip', size: '1.2 GB', url: 'assets/os/lineage-21.0-20241201-NIGHTLY-o1s.zip' },
+                    'OnePlus 9': { file: 'lineage-21.0-20241201-NIGHTLY-lemonade.zip', size: '1.1 GB', url: 'assets/os/lineage-21.0-20241201-NIGHTLY-lemonade.zip' },
+                    'Pixel 6': { file: 'lineage-21.0-20241201-NIGHTLY-oriole.zip', size: '1.3 GB', url: 'assets/os/lineage-21.0-20241201-NIGHTLY-oriole.zip' }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'grapheneos',
+        name: 'GrapheneOS',
+        description: 'Privacy and security focused mobile OS with Android app compatibility.',
+        category: 'android',
+        icon: 'assets/icons/graphene.webp',
+        iconColor: '#2E7D32',
+        verified: true,
+        rating: 4.7,
+        downloads: '890K',
+        lastUpdated: '2024-12-20',
+        types: {
+          'Stable': {
+            editions: {
+              'Production': {
+                architectures: {
+                  'arm64': {
+                    'Pixel 8 Pro': { file: 'husky-factory-2024122000.zip', size: '1.8 GB', url: 'assets/os/husky-factory-2024122000.zip' },
+                    'Pixel 8': { file: 'shiba-factory-2024122000.zip', size: '1.7 GB', url: 'assets/os/shiba-factory-2024122000.zip' },
+                    'Pixel 7 Pro': { file: 'cheetah-factory-2024122000.zip', size: '1.6 GB', url: 'assets/os/cheetah-factory-2024122000.zip' }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Linux - Uncommon Distros
+      {
+        id: 'slackware',
+        name: 'Slackware',
+        description: 'The oldest surviving Linux distribution, known for simplicity and stability.',
+        category: 'linux',
+        icon: 'assets/icons/slackware.webp',
+        iconColor: '#000080',
+        verified: true,
+        rating: 4.2,
+        downloads: '400K',
+        lastUpdated: '2024-07-15',
+        types: {
+          'Full': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'slackware64-15.0-install-dvd.iso', size: '4.7 GB', url: 'assets/os/slackware64-15.0-install-dvd.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'gentoo',
+        name: 'Gentoo',
+        description: 'Source-based Linux distribution designed for power users and developers.',
+        category: 'linux',
+        icon: 'assets/icons/gentoo.webp',
+        iconColor: '#54487A',
+        verified: true,
+        rating: 4.1,
+        downloads: '300K',
+        lastUpdated: '2024-12-01',
+        types: {
+          'Minimal': {
+            editions: {
+              'Install CD': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'install-amd64-minimal-20241201T170203Z.iso', size: '450 MB', url: 'assets/os/install-amd64-minimal-20241201T170203Z.iso' } },
+                  'arm64': { 'ISO': { file: 'install-arm64-minimal-20241201T170203Z.iso', size: '420 MB', url: 'assets/os/install-arm64-minimal-20241201T170203Z.iso' } },
+                  'PPC': { 'ISO': { file: 'install-ppc64-minimal-20241201T170203Z.iso', size: '400 MB', url: 'assets/os/install-ppc64-minimal-20241201T170203Z.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'blackarch',
+        name: 'BlackArch',
+        description: 'Arch Linux-based penetration testing distribution with 2800+ tools.',
+        category: 'security',
+        icon: 'assets/icons/blackarch.webp',
+        iconColor: '#000000',
+        verified: true,
+        rating: 4.3,
+        downloads: '600K',
+        lastUpdated: '2024-12-01',
+        types: {
+          'Live': {
+            editions: {
+              'Full': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'blackarch-linux-full-2024.12.01-x86_64.iso', size: '15.2 GB', url: 'assets/os/blackarch-linux-full-2024.12.01-x86_64.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'lakka',
+        name: 'Lakka',
+        description: 'RetroArch-based gaming distribution for retro gaming enthusiasts.',
+        category: 'gaming',
+        icon: 'assets/icons/lakka.webp',
+        iconColor: '#FF6B35',
+        verified: true,
+        rating: 4.5,
+        downloads: '800K',
+        lastUpdated: '2024-11-15',
+        types: {
+          'Gaming': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'IMG': { file: 'Lakka-Generic.x86_64-5.0.img.gz', size: '350 MB', url: 'assets/os/Lakka-Generic.x86_64-5.0.img.gz' } },
+                  'arm64': { 'IMG': { file: 'Lakka-RPi4.arm-5.0.img.gz', size: '320 MB', url: 'assets/os/Lakka-RPi4.arm-5.0.img.gz' } },
+                  'RPi': { 'IMG': { file: 'Lakka-RPi2.arm-5.0.img.gz', size: '300 MB', url: 'assets/os/Lakka-RPi2.arm-5.0.img.gz' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Additional Linux Distros
+      {
+        id: 'alpine',
+        name: 'Alpine Linux',
+        description: 'Security-oriented, lightweight Linux distribution based on musl libc.',
+        category: 'lightweight',
+        icon: 'assets/icons/alpine.webp',
+        iconColor: '#0D597F',
+        verified: true,
+        rating: 4.4,
+        downloads: '2.1M',
+        lastUpdated: '2024-11-07',
+        types: {
+          'Standard': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'alpine-standard-3.20.3-x86_64.iso', size: '176 MB', url: 'assets/os/alpine-standard-3.20.3-x86_64.iso' } },
+                  'arm64': { 'ISO': { file: 'alpine-standard-3.20.3-aarch64.iso', size: '168 MB', url: 'assets/os/alpine-standard-3.20.3-aarch64.iso' } },
+                  'x86': { 'ISO': { file: 'alpine-standard-3.20.3-x86.iso', size: '158 MB', url: 'assets/os/alpine-standard-3.20.3-x86.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'nixos',
+        name: 'NixOS',
+        description: 'Declarative Linux distribution with reproducible builds.',
+        category: 'linux',
+        icon: 'assets/icons/nixos.webp',
+        iconColor: '#5277C3',
+        verified: true,
+        rating: 4.5,
+        downloads: '680K',
+        lastUpdated: '2024-11-28',
+        types: {
+          'Stable': {
+            editions: {
+              'GNOME': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'nixos-gnome-24.05-x86_64-linux.iso', size: '3.2 GB', url: 'assets/os/nixos-gnome-24.05-x86_64-linux.iso' } },
+                  'arm64': { 'ISO': { file: 'nixos-gnome-24.05-aarch64-linux.iso', size: '3.0 GB', url: 'assets/os/nixos-gnome-24.05-aarch64-linux.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'void',
+        name: 'Void Linux',
+        description: 'Independent Linux distribution with runit init system.',
+        category: 'linux',
+        icon: 'assets/icons/void.webp',
+        iconColor: '#478061',
+        verified: true,
+        rating: 4.3,
+        downloads: '290K',
+        lastUpdated: '2024-02-14',
+        types: {
+          'Live': {
+            editions: {
+              'XFCE': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'void-live-x86_64-20240314-xfce.iso', size: '1.4 GB', url: 'assets/os/void-live-x86_64-20240314-xfce.iso' } },
+                  'arm64': { 'IMG': { file: 'void-rpi-aarch64-20240314.img.xz', size: '380 MB', url: 'assets/os/void-rpi-aarch64-20240314.img.xz' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // BSD Systems
+      {
+        id: 'dragonfly',
+        name: 'DragonFly BSD',
+        description: 'BSD operating system with advanced clustering features.',
+        category: 'bsd',
+        icon: 'assets/icons/dragonfly.webp',
+        iconColor: '#FF6600',
+        verified: true,
+        rating: 4.0,
+        downloads: '45K',
+        lastUpdated: '2024-06-03',
+        types: {
+          'Release': {
+            editions: {
+              'Standard': {
+                architectures: {
+                  'amd64': { 'IMG': { file: 'dfly-x86_64-6.4.0_REL.img.bz2', size: '1.8 GB', url: 'assets/os/dfly-x86_64-6.4.0_REL.img.bz2' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        id: 'ghostbsd',
+        name: 'GhostBSD',
+        description: 'Desktop-focused FreeBSD distribution with MATE desktop.',
+        category: 'bsd',
+        icon: 'assets/icons/ghostbsd.webp',
+        iconColor: '#1E3A8A',
+        verified: true,
+        rating: 4.2,
+        downloads: '120K',
+        lastUpdated: '2024-10-31',
+        types: {
+          'Desktop': {
+            editions: {
+              'MATE': {
+                architectures: {
+                  'amd64': { 'ISO': { file: 'GhostBSD-24.10.1.iso', size: '3.2 GB', url: 'assets/os/GhostBSD-24.10.1.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // DOS & Legacy
+      {
+        id: 'freedos',
+        name: 'FreeDOS',
+        description: 'Free DOS-compatible operating system for legacy applications.',
+        category: 'legacy',
+        icon: 'assets/icons/freedos.webp',
+        iconColor: '#0066CC',
+        verified: true,
+        rating: 4.0,
+        downloads: '890K',
+        lastUpdated: '2022-02-20',
+        types: {
+          'Full': {
+            editions: {
+              'Full Distribution': {
+                architectures: {
+                  'i386': { 'ISO': { file: 'FD13FULL.iso', size: '720 MB', url: 'assets/os/FD13FULL.iso' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Gaming Systems
+      {
+        id: 'steamos',
+        name: 'SteamOS',
+        description: 'Valve\'s gaming-focused Linux distribution.',
+        category: 'gaming',
+        icon: 'assets/icons/steamos.webp',
+        iconColor: '#1B2838',
+        verified: true,
+        rating: 4.3,
+        downloads: '1.8M',
+        lastUpdated: '2024-11-21',
+        types: {
+          'Desktop': {
+            editions: {
+              'Holo': {
+                architectures: {
+                  'amd64': { 'IMG': { file: 'steamdeck-recovery-4.img.bz2', size: '5.5 GB', url: 'assets/os/steamdeck-recovery-4.img.bz2' } }
+                }
+              }
+            }
+          }
+        }
+      },
+      // Mobile Systems
+      {
+        id: 'postmarket',
+        name: 'postmarketOS',
+        description: 'Real Linux distribution for phones based on Alpine Linux.',
+        category: 'mobile',
+        icon: 'assets/icons/postmarket.webp',
+        iconColor: '#009639',
+        verified: true,
+        rating: 4.2,
+        downloads: '180K',
+        lastUpdated: '2024-12-15',
+        types: {
+          'Stable': {
+            editions: {
+              'Phosh': {
+                architectures: {
+                  'arm64': {
+                    'PinePhone': { file: 'postmarketOS-v24.06-phosh-pinephone.img.xz', size: '1.8 GB', url: 'assets/os/postmarketOS-v24.06-phosh-pinephone.img.xz' }
+                  }
+                }
               }
             }
           }
