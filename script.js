@@ -8,12 +8,18 @@ class OSHub {
         name: 'Debian',
         description: 'The universal operating system - stable, secure, and completely free.',
         category: 'linux',
-        icon: 'debian.webp',
+        icon: 'https://voltnexis.github.io/data/os/icons/debian.webp',
         iconColor: '#FFFFFF',
         verified: true,
         rating: 4.6,
         downloads: '8.2M',
         lastUpdated: '2024-11-30',
+        screenshots: [
+          'https://upload.wikimedia.org/wikipedia/commons/f/f8/Screenshot_of_Debian_12_%28Bookworm%29_GNOME_43.9%E2%80%94English.png',
+          'https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Xfce-desktop.png',
+          'https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Cinnamon-themes.png',
+          'https://media.geeksforgeeks.org/wp-content/uploads/20220124180816/dolphin.jpg'
+        ],
         types: {
           'NetInstall': {
             editions: {
@@ -60,6 +66,12 @@ class OSHub {
         rating: 4.7,
         downloads: '12.3M',
         lastUpdated: '2024-12-20',
+        screenshots: [
+          'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_720/https%3A%2F%2Flh6.googleusercontent.com%2FhudiV1JElIOeNNSTcnVRLCQ-Ekr_COZepxM_UBWmBZyDUeP3wzE9cGUyB8zZMNPiyQQXkmEmOssKNvs1VMvx58N5ayB6e8-eaiU0wHrr76_QdiD7M-vvbtce2LYJ6LsyS9YUGs2T',
+          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-full-menu-screenshot.png',
+          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Location-Services-menu.png',
+          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Controls-menu..png'
+        ],
         types: {
           'Desktop': {
             editions: {
@@ -111,6 +123,10 @@ class OSHub {
         rating: 4.8,
         downloads: '5.4M',
         lastUpdated: '2024-12-15',
+        screenshots: [
+          'https://voltnexis.github.io/data/os/scnshots/1.jpg',
+          'https://voltnexis.github.io/data/os/scrnshots/2.jpg'
+        ],
         types: {
           'Cinnamon': {
             editions: {
@@ -152,6 +168,11 @@ class OSHub {
         rating: 4.7,
         downloads: '3.5M',
         lastUpdated: '2025-01-07',
+        screenshots: [
+          'https://voltnexis.github.io/data/os/scrnshots/1.jpg',
+          'https://voltnexis.github.io/data/os/scrnshots/2.jpg',
+          'https://voltnexis.github.io/data/os/scrnshots/3.jpg'
+        ],
         types: {
           'Live': {
             editions: {
@@ -194,6 +215,12 @@ class OSHub {
         rating: 4.8,
         downloads: '5.7M',
         lastUpdated: '2025-01-10',
+        screenshots: [
+          'https://voltnexis.github.io/data/os/screenshots/kali-1.jpg',
+          'https://voltnexis.github.io/data/os/screenshots/kali-2.jpg',
+          'https://voltnexis.github.io/data/os/screenshots/kali-3.jpg',
+          'https://voltnexis.github.io/data/os/screenshots/kali-4.jpg'
+        ],
         types: {
           'Installer': {
             editions: {
@@ -397,6 +424,12 @@ class OSHub {
         rating: 4.3,
         downloads: '25.8M',
         lastUpdated: '2024-11-15',
+        screenshots: [
+          'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22660842/windows11.jpg',
+          'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22660400/windows11_4.png',
+          'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22660401/windows11_2.png',
+          'https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22660422/windows11_3.jpeg'
+        ],
         types: {
           'Consumer': {
             editions: {
@@ -788,8 +821,9 @@ class OSHub {
     card.setAttribute('data-category', os.category);
     card.setAttribute('data-id', os.id);
 
-    const iconContent = os.icon.startsWith('assets/') ? 
-      `<img src="${os.icon}" alt="${os.name}" style="width: 32px; height: 32px; object-fit: contain;">` : 
+    const iconContent = os.icon.startsWith('http') || os.icon.startsWith('assets/') ? 
+      `<img src="${os.icon}" alt="${os.name}" style="width: 32px; height: 32px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` +
+      `<div style="display: none; width: 32px; height: 32px; background: ${os.iconColor}; border-radius: 4px; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: bold;">${os.name.charAt(0)}</div>` :
       `<i class="${os.icon}"></i>`;
 
     // Get total counts for 4-level hierarchy

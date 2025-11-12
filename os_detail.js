@@ -104,8 +104,9 @@ class OSDetail {
     // Update page title
     document.title = `${os.name} - VoltNexis OS Hub`;
 
-    const iconContent = os.icon.startsWith('assets/') ? 
-      `<img src="${os.icon}" alt="${os.name}" style="width: 48px; height: 48px; object-fit: contain;">` : 
+    const iconContent = os.icon.startsWith('http') || os.icon.startsWith('assets/') ? 
+      `<img src="${os.icon}" alt="${os.name}" style="width: 48px; height: 48px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">` +
+      `<div style="display: none; width: 48px; height: 48px; background: ${os.iconColor}; border-radius: 8px; align-items: center; justify-content: center; color: white; font-size: 24px; font-weight: bold;">${os.name.charAt(0)}</div>` :
       `<i class="${os.icon}"></i>`;
 
     // Calculate stats
@@ -193,6 +194,9 @@ class OSDetail {
 
     // Render info sidebar
     this.renderInfoSidebar();
+    
+    // Render screenshots
+    this.renderScreenshots();
   }
 
   renderDownloadSection() {
@@ -596,6 +600,37 @@ class OSDetail {
     return 1;
   }
   
+  renderScreenshots() {
+    const screenshotsContainer = document.getElementById('screenshotsContainer');
+    const os = this.osData;
+    
+    if (!os.screenshots || os.screenshots.length === 0) {
+      screenshotsContainer.innerHTML = `
+        <div class="screenshot">
+          <i class="fas fa-image"></i>
+        </div>
+        <div class="screenshot">
+          <i class="fas fa-image"></i>
+        </div>
+        <div class="screenshot">
+          <i class="fas fa-image"></i>
+        </div>
+        <div class="screenshot">
+          <i class="fas fa-image"></i>
+        </div>
+      `;
+      return;
+    }
+    
+    screenshotsContainer.innerHTML = os.screenshots.map(screenshot => `
+      <div class="screenshot" onclick="openScreenshot('${screenshot}')">
+        <img src="${screenshot}" alt="${os.name} screenshot" 
+             style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+             onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\"fas fa-image\"></i>';">
+      </div>
+    `).join('');
+  }
+  
 
 
 
@@ -632,7 +667,11 @@ class OSDetail {
   }
 }
 
-// Global functions for sharing
+// Global functions for sharing and screenshots
+function openScreenshot(url) {
+  window.open(url, '_blank');
+}
+
 function shareOS() {
   const osData = JSON.parse(localStorage.getItem('selectedOS'));
   if (!osData) return;
