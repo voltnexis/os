@@ -45,20 +45,20 @@ class OSHub {
             "editions": {
               "GNOME": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-gnome.iso", "size": "3.1 GB", "url": "assets/os/debian-live-12.8.0-amd64-gnome.iso" }},
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-gnome.iso", "size": "3.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-gnome.iso" }},
                   "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-gnome.iso",  "size": "3.0 GB", "url": "assets/os/debian-live-12.8.0-i386-gnome.iso" }}
                 }
               },
 
               "KDE Plasma": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-kde.iso", "size": "3.4 GB", "url": "assets/os/debian-live-12.8.0-amd64-kde.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-kde.iso", "size": "3.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-kde.iso" }}
                 }
               },
 
               "Xfce": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-xfce.iso", "size": "2.6 GB", "url": "assets/os/debian-live-12.8.0-amd64-xfce.iso" }},
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-xfce.iso", "size": "2.6 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-xfce.iso" }},
                   "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-xfce.iso",  "size": "2.5 GB", "url": "assets/os/debian-live-12.8.0-i386-xfce.iso" }}
                 }
               },
