@@ -4,51 +4,111 @@ class OSHub {
     this.osFiles = [
       // Linux - Debian-Based
       {
-        id: 'debian',
-        name: 'Debian',
-        description: 'The universal operating system - stable, secure, and completely free.',
-        category: 'linux',
-        icon: 'https://voltnexis.github.io/data/os/icons/debian.webp',
-        iconColor: '#FFFFFF',
-        verified: true,
-        rating: 4.6,
-        downloads: '8.2M',
-        lastUpdated: '2024-11-30',
-        screenshots: [
-          'https://upload.wikimedia.org/wikipedia/commons/f/f8/Screenshot_of_Debian_12_%28Bookworm%29_GNOME_43.9%E2%80%94English.png',
-          'https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Xfce-desktop.png',
-          'https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Cinnamon-themes.png',
-          'https://media.geeksforgeeks.org/wp-content/uploads/20220124180816/dolphin.jpg'
+        "id": "debian",
+        "name": "Debian",
+        "description": "The universal operating system - stable, secure, and completely free.",
+        "category": "linux",
+        "icon": "https://voltnexis.github.io/data/os/icons/debian.webp",
+        "iconColor": "#FFFFFF",
+        "verified": true,
+        "rating": 4.6,
+        "downloads": "8.2M",
+        "lastUpdated": "2024-11-30",
+        "screenshots": [
+          "https://upload.wikimedia.org/wikipedia/commons/f/f8/Screenshot_of_Debian_12_%28Bookworm%29_GNOME_43.9%E2%80%94English.png",
+          "https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Xfce-desktop.png",
+          "https://b1490832.smushcdn.com/1490832/wp-content/uploads/2022/02/Cinnamon-themes.png",
+          "https://media.geeksforgeeks.org/wp-content/uploads/20220124180816/dolphin.jpg"
         ],
-        types: {
-          'NetInstall': {
-            editions: {
-              'Minimal': {
-                architectures: {
-                  'amd64': { 'ISO': { file: 'debian-12.8.0-amd64-netinst.iso', size: '650 MB', url: 'assets/os/debian-12.8.0-amd64-netinst.iso' } },
-                  'arm64': { 'ISO': { file: 'debian-12.8.0-arm64-netinst.iso', size: '620 MB', url: 'assets/os/debian-12.8.0-arm64-netinst.iso' } },
-                  'i386': { 'ISO': { file: 'debian-12.8.0-i386-netinst.iso', size: '640 MB', url: 'assets/os/debian-12.8.0-i386-netinst.iso' } }
+
+        "types": {
+          "NetInstall": {
+            "editions": {
+              "Minimal": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-netinst.iso", "size": "650 MB", "url": "assets/os/debian-12.8.0-amd64-netinst.iso" }},
+                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-netinst.iso", "size": "620 MB", "url": "assets/os/debian-12.8.0-arm64-netinst.iso" }},
+                  "i386":  { "ISO": { "file": "debian-12.8.0-i386-netinst.iso",  "size": "640 MB", "url": "assets/os/debian-12.8.0-i386-netinst.iso" }}
+                }
+              },
+
+              "Minimal (Firmware Included)": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-firmware-12.8.0-amd64-netinst.iso", "size": "680 MB", "url": "assets/os/debian-firmware-12.8.0-amd64-netinst.iso" }},
+                  "arm64": { "ISO": { "file": "debian-firmware-12.8.0-arm64-netinst.iso", "size": "650 MB", "url": "assets/os/debian-firmware-12.8.0-arm64-netinst.iso" }}
                 }
               }
             }
           },
-          'Live': {
-            editions: {
-              'GNOME': {
-                architectures: {
-                  'amd64': { 'ISO': { file: 'debian-live-12.8.0-amd64-gnome.iso', size: '3.1 GB', url: 'assets/os/debian-live-12.8.0-amd64-gnome.iso' } },
-                  'i386': { 'ISO': { file: 'debian-live-12.8.0-i386-gnome.iso', size: '3.0 GB', url: 'assets/os/debian-live-12.8.0-i386-gnome.iso' } }
+
+          "Live": {
+            "editions": {
+              "GNOME": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-gnome.iso", "size": "3.1 GB", "url": "assets/os/debian-live-12.8.0-amd64-gnome.iso" }},
+                  "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-gnome.iso",  "size": "3.0 GB", "url": "assets/os/debian-live-12.8.0-i386-gnome.iso" }}
+                }
+              },
+
+              "KDE Plasma": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-kde.iso", "size": "3.4 GB", "url": "assets/os/debian-live-12.8.0-amd64-kde.iso" }}
+                }
+              },
+
+              "Xfce": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-xfce.iso", "size": "2.6 GB", "url": "assets/os/debian-live-12.8.0-amd64-xfce.iso" }},
+                  "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-xfce.iso",  "size": "2.5 GB", "url": "assets/os/debian-live-12.8.0-i386-xfce.iso" }}
+                }
+              },
+
+              "LXQt": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-lxqt.iso", "size": "2.7 GB", "url": "assets/os/debian-live-12.8.0-amd64-lxqt.iso" }}
+                }
+              },
+      
+              "LXDE": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-lxde.iso", "size": "2.4 GB", "url": "assets/os/debian-live-12.8.0-amd64-lxde.iso" }}
+                }
+              },
+      
+              "Cinnamon": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-cinnamon.iso", "size": "3.0 GB", "url": "assets/os/debian-live-12.8.0-amd64-cinnamon.iso" }}
+                }
+              },
+
+              "MATE": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-mate.iso", "size": "2.9 GB", "url": "assets/os/debian-live-12.8.0-amd64-mate.iso" }}
+                }
+              },
+
+              "Standard (No GUI)": {
+                "architectures": {
+            "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-standard.iso", "size": "1.8 GB", "url": "assets/os/debian-live-12.8.0-amd64-standard.iso" }}
                 }
               }
             }
           },
-          'Installer DVD': {
-            editions: {
-              'Complete': {
-                architectures: {
-                  'amd64': { 'ISO': { file: 'debian-12.8.0-amd64-DVD-1.iso', size: '3.7 GB', url: 'assets/os/debian-12.8.0-amd64-DVD-1.iso' } },
-                  'arm64': { 'ISO': { file: 'debian-12.8.0-arm64-DVD-1.iso', size: '3.6 GB', url: 'assets/os/debian-12.8.0-arm64-DVD-1.iso' } },
-                  'i386': { 'ISO': { file: 'debian-12.8.0-i386-DVD-1.iso', size: '3.5 GB', url: 'assets/os/debian-12.8.0-i386-DVD-1.iso' } }
+
+          "Installer DVD": {
+            "editions": {
+              "Complete (DVD-1)": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-DVD-1.iso", "size": "3.7 GB", "url": "assets/os/debian-12.8.0-amd64-DVD-1.iso" }},
+                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-DVD-1.iso", "size": "3.6 GB", "url": "assets/os/debian-12.8.0-arm64-DVD-1.iso" }},
+                  "i386":  { "ISO": { "file": "debian-12.8.0-i386-DVD-1.iso",  "size": "3.5 GB", "url": "assets/os/debian-12.8.0-i386-DVD-1.iso" }}
+                }
+              },
+
+              "Complete (DVD-1 + Firmware)": {
+                "architectures": {
+                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-DVD-1-firmware.iso", "size": "3.8 GB", "url": "assets/os/debian-12.8.0-amd64-DVD-1-firmware.iso" }},
+                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-DVD-1-firmware.iso", "size": "3.7 GB", "url": "assets/os/debian-12.8.0-arm64-DVD-1-firmware.iso" }}
                 }
               }
             }
