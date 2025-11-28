@@ -26,14 +26,13 @@ class OSHub {
             "editions": {
               "Minimal": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-13.2.0-amd64-netinst.iso", "size": "650 MB", "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.2.0-amd64-netinst.iso" }},
-                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-netinst.iso", "size": "620 MB", "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-13.2.0-arm64-netinst.iso" }},
-                  "armhf":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/debian-13.2.0-armhf-netinst.iso" }},
-                  "ppc64el":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/debian-13.2.0-ppc64el-netinst.iso" }},
-                  "riscv64":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/debian-13.2.0-riscv64-netinst.iso" }},
-                  "s390x":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/debian-13.2.0-s390x-netinst.iso" }}
+                  "amd64": { "ISO": { "file": "debian-13.2.0-amd64-netinst.iso", "size": "784 MB", "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.2.0-amd64-netinst.iso" }},
+                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-netinst.iso", "size": "736 MB", "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-13.2.0-arm64-netinst.iso" }},
+                  "armhf":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "896 MB", "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/debian-13.2.0-armhf-netinst.iso" }},
+                  "ppc64el":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "621 MB", "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/debian-13.2.0-ppc64el-netinst.iso" }},
+                  "riscv64":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "626 MB", "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/debian-13.2.0-riscv64-netinst.iso" }},
+                  "s390x":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "427 MB", "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/debian-13.2.0-s390x-netinst.iso" }}
                 }
-               }
               }
             }
           },
@@ -54,37 +53,37 @@ class OSHub {
 
               "Xfce": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-xfce.iso", "size": "2.6 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-xfce.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-xfce.iso", "size": "3.6 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-xfce.iso" }}
                 }
               },
 
               "LXQt": {
                 "architectures": {
-                  "amd64": { "DEB": { "file": "debian-live-13.2.0-amd64-lxqt.iso", "size": "2.7 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxqt.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-lxqt.iso", "size": "3.7 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxqt.iso" }}
                 }
               },
       
               "LXDE": {
                 "architectures": {
-                  "amd64": { "DEB": { "file": "debian-live-13.2.0-amd64-lxde.iso", "size": "2.4 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxde.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-lxde.iso", "size": "3.5 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxde.iso" }}
                 }
               },
       
               "Cinnamon": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-cinnamon.iso", "size": "3.0 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-cinnamon.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-cinnamon.iso", "size": "3.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-cinnamon.iso" }}
                 }
               },
 
               "MATE": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-mate.iso", "size": "2.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-mate.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-mate.iso", "size": "3.7 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-mate.iso" }}
                 }
               },
 
               "Standard (No GUI)": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-standard.iso", "size": "1.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-standard.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-standard.iso", "size": "1.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-standard.iso" }}
                 }
               }
             }
@@ -95,7 +94,7 @@ class OSHub {
               "Complete (DVD-1)": {
                 "architectures": {
                   "amd64": { "ISO": { "file": "debian-13.2.0-amd64-DVD-1.iso", "size": "3.7 GB", "url": "https://cloudfront.debian.net/debian-cd/current/amd64/iso-dvd/debian-13.2.0-amd64-DVD-1.iso" }},
-                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-DVD-1.iso", "size": "3.6 GB", "url": "https://cloudfront.debian.net/debian-cd/current/arm64/iso-dvd/debian-13.2.0-arm64-DVD-1.iso" }}
+                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-DVD-1.iso", "size": "3.7 GB", "url": "https://cloudfront.debian.net/debian-cd/current/arm64/iso-dvd/debian-13.2.0-arm64-DVD-1.iso" }}
                 }
               }
             }
@@ -103,62 +102,176 @@ class OSHub {
         }
       },
       {
-        id: 'ubuntu',
-        name: 'Ubuntu',
-        description: 'User-friendly Linux distribution perfect for beginners and professionals.',
-        category: 'linux',
-        icon: 'https://voltnexis.github.io/data/os/icons/ubuntu.webp',
-        iconColor: '#FFFFFF',
-        verified: true,
-        rating: 4.7,
-        downloads: '12.3M',
-        lastUpdated: '2024-12-20',
-        screenshots: [
-          'https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_720/https%3A%2F%2Flh6.googleusercontent.com%2FhudiV1JElIOeNNSTcnVRLCQ-Ekr_COZepxM_UBWmBZyDUeP3wzE9cGUyB8zZMNPiyQQXkmEmOssKNvs1VMvx58N5ayB6e8-eaiU0wHrr76_QdiD7M-vvbtce2LYJ6LsyS9YUGs2T',
-          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-full-menu-screenshot.png',
-          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Location-Services-menu.png',
-          'https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Controls-menu..png'
-        ],
-        types: {
-          'Desktop': {
-            editions: {
-              'Standard': {
-                architectures: {
-                  'amd64': { 'ISO': { file: 'ubuntu-24.04.2-desktop-amd64.iso', size: '4.6 GB', url: 'assets/os/ubuntu-24.04.2-desktop-amd64.iso' } },
-                  'arm64': { 'ISO': { file: 'ubuntu-24.04.2-desktop-arm64.iso', size: '4.4 GB', url: 'assets/os/ubuntu-24.04.2-desktop-arm64.iso' } }
-                }
+  "id": "ubuntu",
+  "name": "Ubuntu",
+  "description": "User-friendly Linux distribution perfect for beginners and professionals.",
+  "category": "linux",
+  "icon": "https://voltnexis.github.io/data/os/icons/ubuntu.webp",
+  "iconColor": "#FFFFFF",
+  "verified": true,
+  "rating": 4.7,
+  "downloads": "12.3M",
+  "lastUpdated": "2024-12-20",
+  "screenshots": [
+    "https://res.cloudinary.com/canonical/image/fetch/f_auto,q_auto,fl_sanitize,c_fill,w_720/https%3A%2F%2Flh6.googleusercontent.com%2FhudiV1JElIOeNNSTcnVRLCQ-Ekr_COZepxM_UBWmBZyDUeP3wzE9cGUyB8zZMNPiyQQXkmEmOssKNvs1VMvx58N5ayB6e8-eaiU0wHrr76_QdiD7M-vvbtce2LYJ6LsyS9YUGs2T",
+    "https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-full-menu-screenshot.png",
+    "https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Location-Services-menu.png",
+    "https://www.hostinger.com/in/tutorials/wp-content/uploads/sites/2/2022/04/Ubuntu-Controls-menu..png"
+  ],
+  "types": {
+    "Desktop": {
+      "editions": {
+        "Standard": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntu-24.04.3-desktop-amd64.iso",
+                "size": "5.9 GB",
+                "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.3-desktop-amd64.iso"
               }
-            }
-          },
-          'Server': {
-            editions: {
-              'Standard': {
-                architectures: {
-                  'amd64': { 'ISO': { file: 'ubuntu-24.04.2-server-amd64.iso', size: '2.1 GB', url: 'assets/os/ubuntu-24.04.2-server-amd64.iso' } },
-                  'arm64': { 'ISO': { file: 'ubuntu-24.04.2-server-arm64.iso', size: '2.0 GB', url: 'assets/os/ubuntu-24.04.2-server-arm64.iso' } }
-                }
+            },
+            "arm64": {
+              "ISO": {
+                "file": "ubuntu-24.04.2-desktop-arm64.iso",
+                "size": "4.4 GB",
+                "url": "assets/os/ubuntu-24.04.2-desktop-arm64.iso"
               }
-            }
-          },
-          'Flavours': {
-            editions: {
-              'Kubuntu': { architectures: { 'amd64': { 'ISO': { file: 'kubuntu-24.04.2-desktop-amd64.iso', size: '4.2 GB', url: 'assets/os/kubuntu-24.04.2-desktop-amd64.iso' } } } },
-              'Xubuntu': { architectures: { 'amd64': { 'ISO': { file: 'xubuntu-24.04.2-desktop-amd64.iso', size: '3.8 GB', url: 'assets/os/xubuntu-24.04.2-desktop-amd64.iso' } } } },
-              'Lubuntu': { architectures: { 'amd64': { 'ISO': { file: 'lubuntu-24.04.2-desktop-amd64.iso', size: '3.2 GB', url: 'assets/os/lubuntu-24.04.2-desktop-amd64.iso' } } } },
-              'Ubuntu Budgie': { architectures: { 'amd64': { 'ISO': { file: 'ubuntu-budgie-24.04.2-desktop-amd64.iso', size: '4.0 GB', url: 'assets/os/ubuntu-budgie-24.04.2-desktop-amd64.iso' } } } },
-              'Ubuntu Studio': { architectures: { 'amd64': { 'ISO': { file: 'ubuntustudio-24.04.2-dvd-amd64.iso', size: '5.2 GB', url: 'assets/os/ubuntustudio-24.04.2-dvd-amd64.iso' } } } },
-              'Ubuntu MATE': { architectures: { 'amd64': { 'ISO': { file: 'ubuntu-mate-24.04.2-desktop-amd64.iso', size: '4.1 GB', url: 'assets/os/ubuntu-mate-24.04.2-desktop-amd64.iso' } } } },
-              'Ubuntu Kylin': { architectures: { 'amd64': { 'ISO': { file: 'ubuntukylin-24.04.2-desktop-amd64.iso', size: '4.3 GB', url: 'assets/os/ubuntukylin-24.04.2-desktop-amd64.iso' } } } }
-            }
-          },
-          'Cloud': {
-            editions: {
-              'Cloud Images': { architectures: { 'amd64': { 'QCOW2': { file: 'ubuntu-24.04-server-cloudimg-amd64.img', size: '700 MB', url: 'assets/os/ubuntu-24.04-server-cloudimg-amd64.img' } } } },
-              'WSL': { architectures: { 'x64': { 'AppX': { file: 'ubuntu-24.04-wsl.appx', size: '450 MB', url: 'assets/os/ubuntu-24.04-wsl.appx' } } } }
             }
           }
         }
-      },
+      }
+    },
+    "Server": {
+      "editions": {
+        "Standard": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntu-24.04.3-server-amd64.iso",
+                "size": "3.1 GB",
+                "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.3-live-server-amd64.iso"
+              }
+            },
+            "arm64": {
+              "ISO": {
+                "file": "ubuntu-24.04.2-server-arm64.iso",
+                "size": "2.0 GB",
+                "url": "assets/os/ubuntu-24.04.2-server-arm64.iso"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Flavours": {
+      "editions": {
+        "Kubuntu": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "kubuntu-24.04.2-desktop-amd64.iso",
+                "size": "4.2 GB",
+                "url": "assets/os/kubuntu-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        },
+        "Xubuntu": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "xubuntu-24.04.2-desktop-amd64.iso",
+                "size": "3.8 GB",
+                "url": "assets/os/xubuntu-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        },
+        "Lubuntu": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "lubuntu-24.04.2-desktop-amd64.iso",
+                "size": "3.2 GB",
+                "url": "assets/os/lubuntu-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        },
+        "Ubuntu Budgie": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntu-budgie-24.04.2-desktop-amd64.iso",
+                "size": "4.0 GB",
+                "url": "assets/os/ubuntu-budgie-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        },
+        "Ubuntu Studio": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntustudio-24.04.2-dvd-amd64.iso",
+                "size": "5.2 GB",
+                "url": "assets/os/ubuntustudio-24.04.2-dvd-amd64.iso"
+              }
+            }
+          }
+        },
+        "Ubuntu MATE": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntu-mate-24.04.2-desktop-amd64.iso",
+                "size": "4.1 GB",
+                "url": "assets/os/ubuntu-mate-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        },
+        "Ubuntu Kylin": {
+          "architectures": {
+            "amd64": {
+              "ISO": {
+                "file": "ubuntukylin-24.04.2-desktop-amd64.iso",
+                "size": "4.3 GB",
+                "url": "assets/os/ubuntukylin-24.04.2-desktop-amd64.iso"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Cloud": {
+      "editions": {
+        "Cloud Images": {
+          "architectures": {
+            "amd64": {
+              "QCOW2": {
+                "file": "ubuntu-24.04-server-cloudimg-amd64.img",
+                "size": "700 MB",
+                "url": "assets/os/ubuntu-24.04-server-cloudimg-amd64.img"
+              }
+            }
+          }
+        },
+        "WSL": {
+          "architectures": {
+            "x64": {
+              "AppX": {
+                "file": "ubuntu-24.04-wsl.appx",
+                "size": "450 MB",
+                "url": "assets/os/ubuntu-24.04-wsl.appx"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+},
       {
         id: 'linux-mint',
         name: 'Linux Mint',
