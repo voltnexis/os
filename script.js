@@ -26,17 +26,14 @@ class OSHub {
             "editions": {
               "Minimal": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-netinst.iso", "size": "650 MB", "url": "assets/os/debian-12.8.0-amd64-netinst.iso" }},
-                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-netinst.iso", "size": "620 MB", "url": "assets/os/debian-12.8.0-arm64-netinst.iso" }},
-                  "i386":  { "ISO": { "file": "debian-12.8.0-i386-netinst.iso",  "size": "640 MB", "url": "assets/os/debian-12.8.0-i386-netinst.iso" }}
+                  "amd64": { "ISO": { "file": "debian-13.2.0-amd64-netinst.iso", "size": "650 MB", "url": "https://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-13.2.0-amd64-netinst.iso" }},
+                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-netinst.iso", "size": "620 MB", "url": "https://cdimage.debian.org/debian-cd/current/arm64/iso-cd/debian-13.2.0-arm64-netinst.iso" }},
+                  "armhf":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/armhf/iso-cd/debian-13.2.0-armhf-netinst.iso" }},
+                  "ppc64el":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/ppc64el/iso-cd/debian-13.2.0-ppc64el-netinst.iso" }},
+                  "riscv64":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/riscv64/iso-cd/debian-13.2.0-riscv64-netinst.iso" }},
+                  "s390x":  { "ISO": { "file": "debian-13.2.0-i386-netinst.iso",  "size": "640 MB", "url": "https://cdimage.debian.org/debian-cd/current/s390x/iso-cd/debian-13.2.0-s390x-netinst.iso" }}
                 }
-              },
-
-              "Minimal (Firmware Included)": {
-                "architectures": {
-                  "amd64": { "ISO": { "file": "debian-firmware-12.8.0-amd64-netinst.iso", "size": "680 MB", "url": "assets/os/debian-firmware-12.8.0-amd64-netinst.iso" }},
-                  "arm64": { "ISO": { "file": "debian-firmware-12.8.0-arm64-netinst.iso", "size": "650 MB", "url": "assets/os/debian-firmware-12.8.0-arm64-netinst.iso" }}
-                }
+               }
               }
             }
           },
@@ -45,51 +42,49 @@ class OSHub {
             "editions": {
               "GNOME": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-gnome.iso", "size": "3.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-gnome.iso" }},
-                  "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-gnome.iso",  "size": "3.0 GB", "url": "assets/os/debian-live-12.8.0-i386-gnome.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-gnome.iso", "size": "3.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-gnome.iso" }}
                 }
               },
 
               "KDE Plasma": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-kde.iso", "size": "3.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-kde.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-kde.iso", "size": "3.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-kde.iso" }}
                 }
               },
 
               "Xfce": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-xfce.iso", "size": "2.6 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-xfce.iso" }},
-                  "i386":  { "ISO": { "file": "debian-live-12.8.0-i386-xfce.iso",  "size": "2.5 GB", "url": "assets/os/debian-live-12.8.0-i386-xfce.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-xfce.iso", "size": "2.6 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-xfce.iso" }}
                 }
               },
 
               "LXQt": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-lxqt.iso", "size": "2.7 GB", "url": "assets/os/debian-live-12.8.0-amd64-lxqt.iso" }}
+                  "amd64": { "DEB": { "file": "debian-live-13.2.0-amd64-lxqt.iso", "size": "2.7 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxqt.iso" }}
                 }
               },
       
               "LXDE": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-lxde.iso", "size": "2.4 GB", "url": "assets/os/debian-live-12.8.0-amd64-lxde.iso" }}
+                  "amd64": { "DEB": { "file": "debian-live-13.2.0-amd64-lxde.iso", "size": "2.4 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-lxde.iso" }}
                 }
               },
       
               "Cinnamon": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-cinnamon.iso", "size": "3.0 GB", "url": "assets/os/debian-live-12.8.0-amd64-cinnamon.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-cinnamon.iso", "size": "3.0 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-cinnamon.iso" }}
                 }
               },
 
               "MATE": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-mate.iso", "size": "2.9 GB", "url": "assets/os/debian-live-12.8.0-amd64-mate.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-mate.iso", "size": "2.9 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-mate.iso" }}
                 }
               },
 
               "Standard (No GUI)": {
                 "architectures": {
-            "amd64": { "ISO": { "file": "debian-live-12.8.0-amd64-standard.iso", "size": "1.8 GB", "url": "assets/os/debian-live-12.8.0-amd64-standard.iso" }}
+                  "amd64": { "ISO": { "file": "debian-live-13.2.0-amd64-standard.iso", "size": "1.8 GB", "url": "https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-13.2.0-amd64-standard.iso" }}
                 }
               }
             }
@@ -99,16 +94,8 @@ class OSHub {
             "editions": {
               "Complete (DVD-1)": {
                 "architectures": {
-                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-DVD-1.iso", "size": "3.7 GB", "url": "assets/os/debian-12.8.0-amd64-DVD-1.iso" }},
-                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-DVD-1.iso", "size": "3.6 GB", "url": "assets/os/debian-12.8.0-arm64-DVD-1.iso" }},
-                  "i386":  { "ISO": { "file": "debian-12.8.0-i386-DVD-1.iso",  "size": "3.5 GB", "url": "assets/os/debian-12.8.0-i386-DVD-1.iso" }}
-                }
-              },
-
-              "Complete (DVD-1 + Firmware)": {
-                "architectures": {
-                  "amd64": { "ISO": { "file": "debian-12.8.0-amd64-DVD-1-firmware.iso", "size": "3.8 GB", "url": "assets/os/debian-12.8.0-amd64-DVD-1-firmware.iso" }},
-                  "arm64": { "ISO": { "file": "debian-12.8.0-arm64-DVD-1-firmware.iso", "size": "3.7 GB", "url": "assets/os/debian-12.8.0-arm64-DVD-1-firmware.iso" }}
+                  "amd64": { "ISO": { "file": "debian-13.2.0-amd64-DVD-1.iso", "size": "3.7 GB", "url": "https://cloudfront.debian.net/debian-cd/current/amd64/iso-dvd/debian-13.2.0-amd64-DVD-1.iso" }},
+                  "arm64": { "ISO": { "file": "debian-13.2.0-arm64-DVD-1.iso", "size": "3.6 GB", "url": "https://cloudfront.debian.net/debian-cd/current/arm64/iso-dvd/debian-13.2.0-arm64-DVD-1.iso" }}
                 }
               }
             }
