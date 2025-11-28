@@ -450,7 +450,7 @@ class OSHub {
             editions: {
               'Standard': {
                 architectures: {
-                  'amd64': { 'ISO': { file: 'tails-amd64-6.10.iso', size: '1.4 GB', url: 'assets/os/tails-amd64-6.10.iso' } }
+                  'amd64': { 'ISO': { file: 'tails-amd64-7.2.iso', size: '2 GB', url: 'https://download.tails.net/tails/stable/tails-amd64-7.2/tails-amd64-7.2.img' } }
                 }
               }
             }
