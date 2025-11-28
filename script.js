@@ -147,16 +147,16 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "ubuntu-24.04.3-server-amd64.iso",
-                "size": "3.1 GB",
-                "url": "https://releases.ubuntu.com/24.04/ubuntu-24.04.3-live-server-amd64.iso"
+                "file": "ubuntu-25.10-server-amd64.iso",
+                "size": "1.9 GB",
+                "url": "https://ubuntu.com/download/server/thank-you?version=25.10&architecture=amd64"
               }
             },
             "arm64": {
               "ISO": {
-                "file": "ubuntu-24.04.2-server-arm64.iso",
-                "size": "2.0 GB",
-                "url": "assets/os/ubuntu-24.04.2-server-arm64.iso"
+                "file": "ubuntu-25.10-server-arm64.iso",
+                "size": "2.2 GB",
+                "url": "https://cdimage.ubuntu.com/releases/25.10/release/ubuntu-25.10-live-server-arm64.iso"
               }
             }
           }
@@ -169,9 +169,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "kubuntu-24.04.2-desktop-amd64.iso",
-                "size": "4.2 GB",
-                "url": "assets/os/kubuntu-24.04.2-desktop-amd64.iso"
+                "file": "kubuntu-26.04-desktop-amd64.iso",
+                "size": "3.9 GB",
+                "url": "https://cdimage.ubuntu.com/kubuntu/releases/26.04/snapshot1/kubuntu-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -180,9 +180,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "xubuntu-24.04.2-desktop-amd64.iso",
-                "size": "3.8 GB",
-                "url": "assets/os/xubuntu-24.04.2-desktop-amd64.iso"
+                "file": "xubuntu-26.04-desktop-amd64.iso",
+                "size": "4.5 GB",
+                "url": "https://cdimage.ubuntu.com/xubuntu/releases/26.04/snapshot1/xubuntu-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -191,9 +191,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "lubuntu-24.04.2-desktop-amd64.iso",
-                "size": "3.2 GB",
-                "url": "assets/os/lubuntu-24.04.2-desktop-amd64.iso"
+                "file": "lubuntu-26.04-desktop-amd64.iso",
+                "size": "3.7 GB",
+                "url": "https://cdimage.ubuntu.com/lubuntu/releases/26.04/snapshot1/lubuntu-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -202,9 +202,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "ubuntu-budgie-24.04.2-desktop-amd64.iso",
-                "size": "4.0 GB",
-                "url": "assets/os/ubuntu-budgie-24.04.2-desktop-amd64.iso"
+                "file": "ubuntu-budgie-26.04-desktop-amd64.iso",
+                "size": "3.9 GB",
+                "url": "https://cdimage.ubuntu.com/ubuntu-budgie/releases/26.04/snapshot1/ubuntu-budgie-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -213,9 +213,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "ubuntustudio-24.04.2-dvd-amd64.iso",
-                "size": "5.2 GB",
-                "url": "assets/os/ubuntustudio-24.04.2-dvd-amd64.iso"
+                "file": "ubuntustudio-26.04-dvd-amd64.iso",
+                "size": "6.9 GB",
+                "url": "https://cdimage.ubuntu.com/ubuntustudio/releases/26.04/snapshot1/ubuntustudio-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -224,9 +224,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "ubuntu-mate-24.04.2-desktop-amd64.iso",
-                "size": "4.1 GB",
-                "url": "assets/os/ubuntu-mate-24.04.2-desktop-amd64.iso"
+                "file": "ubuntu-mate-26.04-desktop-amd64.iso",
+                "size": "3.6 GB",
+                "url": "https://cdimage.ubuntu.com/ubuntu-mate/releases/26.04/snapshot1/ubuntu-mate-26.04-desktop-amd64.iso"
               }
             }
           }
@@ -235,35 +235,9 @@ class OSHub {
           "architectures": {
             "amd64": {
               "ISO": {
-                "file": "ubuntukylin-24.04.2-desktop-amd64.iso",
-                "size": "4.3 GB",
-                "url": "assets/os/ubuntukylin-24.04.2-desktop-amd64.iso"
-              }
-            }
-          }
-        }
-      }
-    },
-    "Cloud": {
-      "editions": {
-        "Cloud Images": {
-          "architectures": {
-            "amd64": {
-              "QCOW2": {
-                "file": "ubuntu-24.04-server-cloudimg-amd64.img",
-                "size": "700 MB",
-                "url": "assets/os/ubuntu-24.04-server-cloudimg-amd64.img"
-              }
-            }
-          }
-        },
-        "WSL": {
-          "architectures": {
-            "x64": {
-              "AppX": {
-                "file": "ubuntu-24.04-wsl.appx",
-                "size": "450 MB",
-                "url": "assets/os/ubuntu-24.04-wsl.appx"
+                "file": "ubuntukylin-26.04-desktop-amd64.iso",
+                "size": "4.5 GB",
+                "url": "https://cdimage.ubuntu.com/ubuntukylin/releases/26.04/snapshot1/ubuntukylin-26.04-desktop-amd64.iso"
               }
             }
           }
